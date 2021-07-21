@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewHomeScreen"
         android:layout_width="274dp"
         android:layout_height="228dp"
         android:src="@drawable/group1"
-        app:layout_constraintBottom_toTopOf="@+id/taskify"
+        app:layout_constraintBottom_toTopOf="@+id/taskifyHomeScreenTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +20,13 @@
         app:layout_constraintVertical_bias="0.733" />
 
     <TextView
-        android:id="@+id/taskify"
+        android:id="@+id/taskifyHomeScreenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Taskify"
         android:textColor="#4263EC"
         android:textSize="40dp"
-        android:textStyle="bold||italic"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -34,33 +35,35 @@
         app:layout_constraintVertical_bias="0.57" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonHomeScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/Create_Account_Orange_button"
+        android:background="@drawable/home_page_orange_create_account_button"
         android:padding="12dp"
         android:text="Create an account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskify"
+        app:layout_constraintTop_toBottomOf="@+id/taskifyHomeScreenTitle"
         app:layout_constraintVertical_bias="0.243" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewAlreadyHaveAnAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:text="Already have an account?"
+        android:textColor="@color/black"
         android:textSize="15dp"
-        android:textStyle="bold||italic"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHomeScreen"
         app:layout_constraintVertical_bias="0.135" />
 
     <TextView
+        android:id="@+id/LoginHomeScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
@@ -70,8 +73,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.233"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/textViewAlreadyHaveAnAccount"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHomeScreen"
         app:layout_constraintVertical_bias="0.135" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
