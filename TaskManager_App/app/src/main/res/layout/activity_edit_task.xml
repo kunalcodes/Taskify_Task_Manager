@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5">
+
+
+    <View
+        android:id="@+id/viewEditTaskBlueBar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#4263EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewEditTaskBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/left_arrow"
+        app:layout_constraintStart_toStartOf="@+id/viewEditTaskBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/viewEditTaskBlueBar" />
+
+    <TextView
+        android:id="@+id/tvEditTaskHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Edit Task"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewEditTaskBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/viewEditTaskBack"
+        app:layout_constraintTop_toBottomOf="@+id/viewEditTaskBack" />
+
+    <TextView
+        android:id="@+id/tvEditTaskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Title"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etEditTaskTitle"
+        app:layout_constraintStart_toStartOf="@+id/etEditTaskTitle" />
+
+    <EditText
+        android:id="@+id/etEditTaskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:text="Webinar on Gradle API"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewEditTaskBlueBar" />
+
+    <TextView
+        android:id="@+id/tvEditTaskDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Description"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etEditTaskDescription"
+        app:layout_constraintStart_toStartOf="@+id/etEditTaskDescription" />
+
+    <EditText
+        android:id="@+id/etEditTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditTaskTitle" />
+
+    <TextView
+        android:id="@+id/tvEditTaskDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etEditTaskDate"
+        app:layout_constraintStart_toStartOf="@+id/etEditTaskDate" />
+
+    <EditText
+        android:id="@+id/etEditTaskDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:text="24 March 2021"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditTaskDescription" />
+
+    <TextView
+        android:id="@+id/tvEditTaskStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Status`"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditTaskPending"
+        app:layout_constraintStart_toStartOf="@+id/btnEditTaskPending" />
+
+    <RadioButton
+        android:id="@+id/btnEditTaskPending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:text="Pending"
+        android:textColor="@color/black"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
+
+    <RadioButton
+        android:id="@+id/btnEditTaskCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="50dp"
+        android:text="Completed"
+        android:textColor="@color/black"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/btnEditTaskPending"
+        app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
+
+    <View
+        android:id="@+id/viewEditTaskLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditTaskPending" />
+
+    <TextView
+        android:id="@+id/tvEditTaskDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp"
+        android:drawableStart="@drawable/delete_red_bg"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:text="Delete task"
+        android:textColor="#FF6666"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/viewEditTaskLine"
+        app:layout_constraintTop_toBottomOf="@+id/viewEditTaskLine" />
+
+    <Button
+        android:id="@+id/btnEditTaskApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn_login_bg"
+        android:paddingHorizontal="95dp"
+        android:paddingVertical="20dp"
+        android:text="Apply Changes"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
