@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5">
+
+
+    <View
+        android:id="@+id/viewSignUpBlueBar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#4263EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewSignUpBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/left_arrow"
+        app:layout_constraintStart_toStartOf="@+id/viewSignUpBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/viewSignUpBlueBar" />
+
+    <TextView
+        android:id="@+id/tvSignUpHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Create an account"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewSignUpBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/viewSignUpBack"
+        app:layout_constraintTop_toBottomOf="@+id/viewSignUpBack" />
+
+    <TextView
+        android:id="@+id/tvSignUpEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="2dp"
+        android:text="Email"
+        app:layout_constraintBottom_toTopOf="@+id/etSignUpEmail"
+        app:layout_constraintStart_toStartOf="@+id/etSignUpEmail" />
+
+    <EditText
+        android:id="@+id/etSignUpEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/et_white_bg"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSignUpBlueBar" />
+
+    <TextView
+        android:id="@+id/tvSignUpPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etSignUpPassword"
+        app:layout_constraintStart_toStartOf="@+id/etSignUpPassword" />
+
+    <EditText
+        android:id="@+id/etSignUpPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/et_white_bg"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSignUpEmail" />
+
+    <TextView
+        android:id="@+id/tvSignUpRePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Re-enter Password"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etSignUpRePassword"
+        app:layout_constraintStart_toStartOf="@+id/etSignUpRePassword" />
+
+    <EditText
+        android:id="@+id/etSignUpRePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/et_white_bg"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSignUpPassword" />
+
+    <Button
+        android:id="@+id/btnSignUpCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:text="Create an account"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="16sp"
+        android:background="@drawable/btn_login_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

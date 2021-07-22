@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5">
+
+
+    <View
+        android:id="@+id/viewCreateTaskBlueBar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#4263EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewCreateTaskBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/left_arrow"
+        app:layout_constraintStart_toStartOf="@+id/viewCreateTaskBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/viewCreateTaskBlueBar" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Create New Task"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewCreateTaskBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/viewCreateTaskBack"
+        app:layout_constraintTop_toBottomOf="@+id/viewCreateTaskBack" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Title"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etCreateTaskTitle"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskTitle" />
+
+    <EditText
+        android:id="@+id/etCreateTaskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:text="Webinar on Gradle API"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCreateTaskBlueBar" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Description"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etCreateTaskDescription"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskDescription" />
+
+    <EditText
+        android:id="@+id/etCreateTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskTitle" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/etCreateTaskDate"
+        app:layout_constraintStart_toStartOf="@+id/etCreateTaskDate" />
+
+    <EditText
+        android:id="@+id/etCreateTaskDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_white_bg"
+        android:text="24 March 2021"
+        android:paddingVertical="12dp"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDescription" />
+
+    <TextView
+        android:id="@+id/tvCreateTaskStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="8dp"
+        android:text="Task Status`"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateTaskPending"
+        app:layout_constraintStart_toStartOf="@+id/btnCreateTaskPending" />
+
+    <RadioButton
+        android:id="@+id/btnCreateTaskPending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="50dp"
+        android:text="Pending"
+        android:textColor="@color/black"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDate" />
+
+    <RadioButton
+        android:id="@+id/btnCreateTaskCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="50dp"
+        android:text="Completed"
+        android:textColor="@color/black"
+        android:paddingVertical="12dp"
+        android:paddingStart="10dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/btnCreateTaskPending"
+        app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDate" />
+
+    <Button
+        android:id="@+id/btnCreateTaskAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn_login_bg"
+        android:drawableStart="@drawable/ic_plus"
+        android:paddingHorizontal="95dp"
+        android:paddingVertical="20dp"
+        android:text="Add New Task"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
