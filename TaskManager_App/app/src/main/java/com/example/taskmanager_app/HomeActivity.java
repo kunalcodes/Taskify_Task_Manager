@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private boolean isComplete;
     private Button mBtnHomeExAdd;
     private TaskAdapter taskAdapter;
+    private ImageView mIvHomeExUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,13 @@ public class HomeActivity extends AppCompatActivity {
         initViews();
         buildRecyclerViewData();
         setRecyclerViewAdapter();
+        mIvHomeExUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToProfile=new Intent(getApplicationContext(),ProfileActivity.class);
+                startActivity(goToProfile);
+            }
+        });
         mBtnHomeExAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        mIvHomeExUser=findViewById(R.id.ivHomeExUser);
         recyclerView = findViewById(R.id.recyclerView);
         mBtnHomeExAdd = findViewById(R.id.btnHomeExAdd);
         mTvHomeExHeyUser = findViewById(R.id.tvHomeExHeyUser);
