@@ -40,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnSignUpCreateAccount:
                 if (isEmailValid() && isPasswordValid()) {
                     Intent goToHome = new Intent(SignUpActivity.this, HomeActivity.class);
+                    goToHome.putExtra("Username", mEtSignUpEmail.getText().toString());
                     startActivity(goToHome);
                 }
                 break;

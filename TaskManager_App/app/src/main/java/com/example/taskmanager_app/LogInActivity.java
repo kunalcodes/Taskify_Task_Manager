@@ -36,6 +36,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLogIn:
                 if (isEmailValid() && isPasswordValid()) {
                     Intent goToHome = new Intent(LogInActivity.this, HomeActivity.class);
+                    goToHome.putExtra("Username", mEtLogInEmail.getText().toString());
                     startActivity(goToHome);
                 }
                 break;
