@@ -10,13 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SplashScreen extends AppCompatActivity {
- TextView mtvSplash;
- ImageView mIvSplash;
+public class SplashScreenPage extends AppCompatActivity {
+    TextView mtvSplash;
+    ImageView mIvSplash;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash_screen_page);
 
         mtvSplash=findViewById(R.id.TextViewSplashScreen);
         Animation animation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
@@ -32,9 +32,9 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
+                Intent intent=new Intent(getApplicationContext(),OnBoardingActivity.class);
                 startActivity(intent);
             }
-        },5000);
+        },3000);
     }
 }
