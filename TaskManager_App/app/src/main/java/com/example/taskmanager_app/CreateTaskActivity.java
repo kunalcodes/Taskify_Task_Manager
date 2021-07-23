@@ -14,6 +14,9 @@ import android.text.InputType;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -23,11 +26,17 @@ public class CreateTaskActivity extends AppCompatActivity {
     private EditText mEtCreateTaskTitle;
     private EditText mEtCreateTaskDescription;
     private EditText mEtCreateTaskDate;
+    private TaskModel taskModel;
+    private FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
+
         initViews();
         mEtCreateTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,12 +47,15 @@ public class CreateTaskActivity extends AppCompatActivity {
         mBtnCreateTaskAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String Title = mEtCreateTaskTitle.getText().toString();
+                String Date = mEtCreateTaskDate.getText().toString().substring(0,8);
+                String Description = mEtCreateTaskDescription.getText().toString();
+                String Time = mEtCreateTaskDate.getText().toString().substring(12);
+                String Task = mEtCreateTaskTitle.getText().toString().trim();
+                boolean isComplete = false;
+                taskModel = new TaskModel(Title,Description,Date,Time, isComplete);
+                node.child(Task).setValue(taskModel);
                 Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
-                setNewTask.putExtra("Title", mEtCreateTaskTitle.getText().toString());
-                setNewTask.putExtra("Description", mEtCreateTaskDescription.getText().toString());
-                setNewTask.putExtra("Date", mEtCreateTaskDate.getText().toString());
-                setNewTask.putExtra("Time", "Time");
-                setNewTask.putExtra("isComplete", false);
                 startActivity(setNewTask);
             }
         });

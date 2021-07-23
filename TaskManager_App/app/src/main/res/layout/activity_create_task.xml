@@ -83,6 +83,7 @@
         android:background="@drawable/et_white_bg"
         android:paddingVertical="12dp"
         android:paddingStart="20dp"
+        android:gravity="top"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,6 @@
 package com.example.taskmanager_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
@@ -19,31 +26,26 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView mTvHomeExHeyUser;
     private String username;
-    private String Title;
-    private String Description;
-    private String Date;
-    private String Time;
-    private boolean isComplete;
     private Button mBtnHomeExAdd;
     private TaskAdapter taskAdapter;
     private ImageView mIvHomeExUser;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference node;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
+        node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
         Intent intent = getIntent();
         if (intent != null && intent.getExtras() != null){
             username = intent.getStringExtra("Username");
-            Title = intent.getStringExtra("Title");
-            Description = intent.getStringExtra("Description");
-            Date = intent.getStringExtra("Title");
-            Time = intent.getStringExtra("Time");
-            isComplete = intent.getBooleanExtra("isComplete", false);
         }
         initViews();
-        buildRecyclerViewData();
         setRecyclerViewAdapter();
+        buildRecyclerViewData();
+
         mIvHomeExUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +58,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent createNewTask = new Intent(HomeActivity.this, CreateTaskActivity.class);
                 startActivity(createNewTask);
-                taskModelList.add(new TaskModel(Title, Description, Date, Time, isComplete));
-                taskAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -70,7 +70,23 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void buildRecyclerViewData() {
-        taskModelList.add(new TaskModel(Title, Description, Date, Time, isComplete));
+        node.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                taskModelList.clear();
+
+                for (DataSnapshot taskDataSnapshot : snapshot.getChildren()){
+
+                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    taskModelList.add(taskModel);
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void initViews() {

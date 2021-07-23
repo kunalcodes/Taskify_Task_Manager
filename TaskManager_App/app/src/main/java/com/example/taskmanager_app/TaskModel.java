@@ -7,6 +7,8 @@ public class TaskModel {
     private String time;
     private boolean isComplete;
 
+    public TaskModel(){}
+
     public TaskModel(String title, String description, String date, String time, boolean isComplete) {
         this.title = title;
         this.description = description;
