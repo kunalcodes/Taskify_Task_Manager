@@ -9,20 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskManager_App">
-        <activity android:name=".SplashScreenPage">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".EditTaskActivity" />
-        <activity android:name=".CreateTaskActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LogInActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".OnBoardingActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
