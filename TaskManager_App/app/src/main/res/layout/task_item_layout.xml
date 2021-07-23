@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#E5E5E5">
+    <TextView
+        android:id="@+id/tvTaskDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Today"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewTaskView"
+        app:layout_constraintStart_toStartOf="@+id/viewTaskView" />
+
+    <View
+        android:id="@+id/viewTaskView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/et_white_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/btnRadioTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewTaskView"
+        app:layout_constraintStart_toStartOf="@+id/viewTaskView"
+        app:layout_constraintTop_toTopOf="@+id/viewTaskView" />
+
+    <TextView
+        android:id="@+id/tvTaskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Meeting with Omar"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRadioTask"
+        app:layout_constraintStart_toEndOf="@+id/btnRadioTask" />
+
+    <TextView
+        android:id="@+id/tvTaskTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="08:00 AM"
+        app:layout_constraintStart_toEndOf="@+id/btnRadioTask"
+        app:layout_constraintTop_toTopOf="@+id/btnRadioTask" />
+
+    <View
+        android:id="@+id/viewTaskExpandedView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="2dp"
+        android:visibility="gone"
+        android:background="@drawable/et_white_bg"
+        android:rotation="180"
+        app:layout_constraintTop_toBottomOf="@+id/viewTaskView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_refresh"
+        android:layout_marginHorizontal="60dp"
+        android:drawablePadding="10dp"
+        android:visibility="gone"
+        android:text="Update"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewTaskExpandedView"
+        app:layout_constraintStart_toStartOf="@+id/viewTaskView"
+        app:layout_constraintTop_toTopOf="@+id/viewTaskExpandedView" />
+
+    <TextView
+        android:id="@+id/tvTaskDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_delete"
+        android:visibility="gone"
+        android:layout_marginHorizontal="60dp"
+        android:drawablePadding="10dp"
+        android:text="Delete"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewTaskExpandedView"
+        app:layout_constraintEnd_toEndOf="@+id/viewTaskView"
+        app:layout_constraintTop_toTopOf="@+id/viewTaskExpandedView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,3 @@
         android:interpolator="@android:anim/cycle_interpolator"/>
 
 </set>
-

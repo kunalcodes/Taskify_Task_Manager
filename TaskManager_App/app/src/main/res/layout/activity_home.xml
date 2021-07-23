@@ -30,8 +30,8 @@
         android:id="@+id/tvHomeExHeyUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:text="Hey Sofia,"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/ivHomeExUser"
@@ -41,266 +41,32 @@
         android:id="@+id/tvHomeExWelcomeBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Welcome Back"
         android:textColor="@color/white"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivHomeExUser"
         app:layout_constraintStart_toEndOf="@+id/ivHomeExUser" />
 
-    <TextView
-        android:id="@+id/tvHomeExToday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Today"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewHomeExTask1"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask1" />
-
-    <View
-        android:id="@+id/viewHomeExTask1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/et_white_bg"
+        android:layout_height="611dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar" />
+        app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar">
 
-    <View
-        android:id="@+id/viewHomeLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginBottom="50dp"
-        android:background="#E5E5E5"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioButton
-        android:id="@+id/btnHomeExRadioMeeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/viewHomeLine"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask1"
-        app:layout_constraintTop_toTopOf="@+id/viewHomeExTask1" />
-
-    <TextView
-        android:id="@+id/tvHomeExMeeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Meeting with Omar"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnHomeExRadioMeeting"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioMeeting" />
-
-    <TextView
-        android:id="@+id/tvHomeExMeetingTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="08:00 AM"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioMeeting"
-        app:layout_constraintTop_toTopOf="@+id/btnHomeExRadioMeeting" />
-
-    <TextView
-        android:id="@+id/tvHomeExUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_refresh"
-        android:layout_marginHorizontal="60dp"
-        android:drawablePadding="10dp"
-        android:text="Update"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask1"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask1"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeLine" />
-
-    <TextView
-        android:id="@+id/tvHomeExDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_delete"
-        android:layout_marginHorizontal="60dp"
-        android:drawablePadding="10dp"
-        android:text="Delete"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask1"
-        app:layout_constraintEnd_toEndOf="@+id/viewHomeExTask1"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeLine" />
-
-    <View
-        android:id="@+id/viewHomeExTask2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/et_white_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExTask1" />
-
-    <RadioButton
-        android:id="@+id/btnHomeExRadioWebinar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask2"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask2"
-        app:layout_constraintTop_toTopOf="@+id/viewHomeExTask2" />
-
-    <TextView
-        android:id="@+id/tvHomeExWebinar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Webinar on Gradle API"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnHomeExRadioWebinar"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioWebinar" />
-
-    <TextView
-        android:id="@+id/tvHomeExWebinarTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="01:00 PM"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioWebinar"
-        app:layout_constraintTop_toTopOf="@+id/btnHomeExRadioWebinar" />
-
-    <TextView
-        android:id="@+id/tvHomeExTomorrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Tomorrow"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewHomeExTask3"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask3" />
-
-    <View
-        android:id="@+id/viewHomeExTask3"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/et_white_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExTask2" />
-
-    <RadioButton
-        android:id="@+id/btnHomeExRadioFrontEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask3"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask3"
-        app:layout_constraintTop_toTopOf="@+id/viewHomeExTask3" />
-
-    <TextView
-        android:id="@+id/tvHomeExFrontEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="01:00 PM"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioFrontEnd"
-        app:layout_constraintTop_toTopOf="@+id/btnHomeExRadioFrontEnd" />
-
-
-    <TextView
-        android:id="@+id/tvHomeExFrontEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Front End Development"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnHomeExRadioFrontEnd"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioFrontEnd" />
-
-    <TextView
-        android:id="@+id/tvHomeEx14May"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Today"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewHomeExTask4"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask4" />
-
-    <View
-        android:id="@+id/viewHomeExTask4"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/et_white_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExTask3" />
-
-    <RadioButton
-        android:id="@+id/btnHomeExRadioBackEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHomeExTask4"
-        app:layout_constraintStart_toStartOf="@+id/viewHomeExTask4"
-        app:layout_constraintTop_toTopOf="@+id/viewHomeExTask4" />
-
-    <TextView
-        android:id="@+id/tvHomeExBackEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="01:00 PM"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioBackEnd"
-        app:layout_constraintTop_toTopOf="@+id/btnHomeExRadioBackEnd" />
-
-
-    <TextView
-        android:id="@+id/tvHomeExBackEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Back End Development"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnHomeExRadioBackEnd"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeExRadioBackEnd" />
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/btnHomeExAdd"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/ic_add"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

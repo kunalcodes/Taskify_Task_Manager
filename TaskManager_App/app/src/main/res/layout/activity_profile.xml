@@ -11,7 +11,6 @@
         android:id="@+id/viewProfileBlueBar"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_marginTop="4dp"
         android:background="#4263EC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,11 +55,9 @@
         android:id="@+id/ivHomeExUser"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewProfileBlueBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_user" />
 

@@ -2,38 +2,63 @@ package com.example.taskmanager_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
-import android.app.DatePickerDialog;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.EditText;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.text.InputType;
+import android.widget.DatePicker;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CreateTaskActivity extends AppCompatActivity {
-private EditText mEtCreateTaskDate;
+
+    private Button mBtnCreateTaskAdd;
+    private EditText mEtCreateTaskTitle;
+    private EditText mEtCreateTaskDescription;
+    private EditText mEtCreateTaskDate;
+    private TaskModel taskModel;
+    private FirebaseDatabase firebaseDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
-        mEtCreateTaskDate=findViewById(R.id.etCreateTaskDate);
-        mEtCreateTaskDate.setInputType(InputType.TYPE_NULL);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
+
+        initViews();
         mEtCreateTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shoeDateTimeDialog(mEtCreateTaskDate);
             }
         });
-
+        mBtnCreateTaskAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Title = mEtCreateTaskTitle.getText().toString();
+                String Date = mEtCreateTaskDate.getText().toString().substring(0,8);
+                String Description = mEtCreateTaskDescription.getText().toString();
+                String Time = mEtCreateTaskDate.getText().toString().substring(12);
+                String Task = mEtCreateTaskTitle.getText().toString().trim();
+                boolean isComplete = false;
+                taskModel = new TaskModel(Title,Description,Date,Time, isComplete);
+                node.child(Task).setValue(taskModel);
+                Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
+                startActivity(setNewTask);
+            }
+        });
     }
 
     private void shoeDateTimeDialog(EditText mEtCreateTaskDate) {
@@ -47,29 +72,26 @@ private EditText mEtCreateTaskDate;
                 TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                       calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                       calendar.set(Calendar.MINUTE,minute);
+                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        calendar.set(Calendar.MINUTE,minute);
 
                         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yy :: HH:mm");
                         mEtCreateTaskDate.setText(simpleDateFormat.format(calendar.getTime()));
                     }
                 };
-
-                setAlarm(calendar.getTimeInMillis());
                 new TimePickerDialog(CreateTaskActivity.this,R.style.TimePickerTheme,onTimeSetListener,
                         calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
-
             }
         };
         new DatePickerDialog(CreateTaskActivity.this,R.style.TimePickerTheme,dateSetListener,calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+
     }
 
-    private void setAlarm(long timeInMillis){
-        AlarmManager alarmManager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent AlarmIntent=new Intent(this,AlarmBroadCastReceiver.class);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,AlarmIntent,0);
-        alarmManager.setRepeating(AlarmManager.RTC,timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent);
-        Toast.makeText(this,"New Task Created ",Toast.LENGTH_SHORT).show();
+    private void initViews() {
+        mBtnCreateTaskAdd = findViewById(R.id.btnCreateTaskAdd);
+        mEtCreateTaskDate = findViewById(R.id.etCreateTaskDate);
+        mEtCreateTaskTitle = findViewById(R.id.etCreateTaskTitle);
+        mEtCreateTaskDescription = findViewById(R.id.etCreateTaskDescription);
     }
 }

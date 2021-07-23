@@ -6,38 +6,59 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class LogInActivity extends AppCompatActivity {
-    private View mViewLogInBack;
+public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private EditText mEtLogInEmail;
+    private EditText mEtLogInPassword;
     private Button mBtnLogIn;
+    private String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        initView();
-
-        mBtnLogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        mViewLogInBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1=new Intent(getApplicationContext(),OnBoardingActivity.class);
-                startActivity(intent1);
-            }
-        });
+        initViews();
+        mBtnLogIn.setOnClickListener(this);
     }
 
+    private void initViews() {
+        mEtLogInEmail = findViewById(R.id.etLogInEmail);
+        mEtLogInPassword = findViewById(R.id.etLogInPassword);
+        mBtnLogIn = findViewById(R.id.btnLogIn);
+    }
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnLogIn:
+                if (isEmailValid() && isPasswordValid()) {
+                    Intent goToHome = new Intent(LogInActivity.this, HomeActivity.class);
+                    goToHome.putExtra("Username", mEtLogInEmail.getText().toString());
+                    startActivity(goToHome);
+                }
+                break;
+        }
+    }
 
-    private void initView() {
-        mViewLogInBack =findViewById(R.id.viewLogInBack);
-        mBtnLogIn=findViewById(R.id.btnLogIn);
+    private boolean isPasswordValid() {
+        if (mEtLogInPassword.getText().toString().length() >= 6) {
+                return true;
+            } else {
+                mEtLogInPassword.setError("Password should contain at least 6 characters");
+                return false;
+            }
+    }
+
+    private boolean isEmailValid() {
+        if (mEtLogInEmail.getText().toString().length() >= 1 &&
+                mEtLogInEmail.getText().toString().matches(emailRegex)){
+            return true;
+        } else {
+            mEtLogInEmail.setError("Enter a valid email");
+            return false;
+        }
     }
 }

@@ -1,30 +1,51 @@
 package com.example.taskmanager_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+
+    private ArrayList<TaskModel> taskModelList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private TextView mTvHomeExHeyUser;
+    private String username;
     private Button mBtnHomeExAdd;
-   private ImageView mIvHomeExUser;
+    private TaskAdapter taskAdapter;
+    private ImageView mIvHomeExUser;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference node;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
+        node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
+        Intent intent = getIntent();
+        if (intent != null && intent.getExtras() != null){
+            username = intent.getStringExtra("Username");
+        }
+        initViews();
+        setRecyclerViewAdapter();
+        buildRecyclerViewData();
 
-        mBtnHomeExAdd=findViewById(R.id.btnHomeExAdd);
-        mBtnHomeExAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToCreateNewTask=new Intent(getApplicationContext(),CreateTaskActivity.class);
-                startActivity(goToCreateNewTask);
-            }
-        });
-        mIvHomeExUser=findViewById(R.id.ivHomeExUser);
         mIvHomeExUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,15 +53,47 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(goToProfile);
             }
         });
-
+        mBtnHomeExAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createNewTask = new Intent(HomeActivity.this, CreateTaskActivity.class);
+                startActivity(createNewTask);
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent=new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    private void setRecyclerViewAdapter() {
+        taskAdapter = new TaskAdapter(taskModelList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setAdapter(taskAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    private void buildRecyclerViewData() {
+        node.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                taskModelList.clear();
+
+                for (DataSnapshot taskDataSnapshot : snapshot.getChildren()){
+
+                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    taskModelList.add(taskModel);
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void initViews() {
+        mIvHomeExUser=findViewById(R.id.ivHomeExUser);
+        recyclerView = findViewById(R.id.recyclerView);
+        mBtnHomeExAdd = findViewById(R.id.btnHomeExAdd);
+        mTvHomeExHeyUser = findViewById(R.id.tvHomeExHeyUser);
+        mTvHomeExHeyUser.setText("Hey "+username+",");
     }
 }

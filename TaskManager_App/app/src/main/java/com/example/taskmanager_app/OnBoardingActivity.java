@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class OnBoardingActivity extends AppCompatActivity {
+public class OnBoardingActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Button mBtnOnBoardingCreateAccount;
     private TextView mTvOnBoardingLogin;
 
@@ -16,25 +17,28 @@ public class OnBoardingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
-        initView();
-        mBtnOnBoardingCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-        mTvOnBoardingLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1=new Intent(getApplicationContext(),LogInActivity.class);
-                startActivity(intent1);
-            }
-        });
+        initViews();
+        mTvOnBoardingLogin.setOnClickListener(this);
+        mBtnOnBoardingCreateAccount.setOnClickListener(this);
     }
 
-    private void initView() {
-        mBtnOnBoardingCreateAccount=findViewById(R.id.btnOnBoardingCreateAccount);
-        mTvOnBoardingLogin=findViewById(R.id.tvOnBoardingLogin);
+    private void initViews() {
+        mBtnOnBoardingCreateAccount = findViewById(R.id.btnOnBoardingCreateAccount);
+        mTvOnBoardingLogin = findViewById(R.id.tvOnBoardingLogin);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnOnBoardingCreateAccount:
+                Intent goToSignUp = new Intent(OnBoardingActivity.this, SignUpActivity.class);
+                startActivity(goToSignUp);
+                break;
+            case R.id.tvOnBoardingLogin:
+                Intent goToLogIn = new Intent(OnBoardingActivity.this, LogInActivity.class);
+                startActivity(goToLogIn);
+                break;
+        }
     }
 }
