@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ItemClickListener {
 
     private ArrayList<TaskModel> taskModelList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -39,9 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
         node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
         Intent intent = getIntent();
-        if (intent != null && intent.getExtras() != null){
-            username = intent.getStringExtra("Username");
-        }
+        username = intent.getStringExtra("Username");
         initViews();
         setRecyclerViewAdapter();
         buildRecyclerViewData();
@@ -49,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         mIvHomeExUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToProfile=new Intent(getApplicationContext(),ProfileActivity.class);
+                Intent goToProfile = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(goToProfile);
             }
         });
@@ -63,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setRecyclerViewAdapter() {
-        taskAdapter = new TaskAdapter(taskModelList);
+        taskAdapter = new TaskAdapter(taskModelList, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setAdapter(taskAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -75,13 +73,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 taskModelList.clear();
 
-                for (DataSnapshot taskDataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
 
                     TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
                     taskModelList.add(taskModel);
                 }
                 taskAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -90,10 +89,30 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        mIvHomeExUser=findViewById(R.id.ivHomeExUser);
+        mIvHomeExUser = findViewById(R.id.ivHomeExUser);
         recyclerView = findViewById(R.id.recyclerView);
         mBtnHomeExAdd = findViewById(R.id.btnHomeExAdd);
         mTvHomeExHeyUser = findViewById(R.id.tvHomeExHeyUser);
-        mTvHomeExHeyUser.setText("Hey "+username+",");
+        mTvHomeExHeyUser.setText("Hey " + username + ",");
+    }
+
+    @Override
+    public void onDeleteClicked(int position) {
+        String Task = taskModelList.get(position).getTitle().trim();
+        node.child(Task).removeValue();
+    }
+
+
+    @Override
+    public void onUpdateClicked(int position) {
+        String Task = taskModelList.get(position).getTitle().trim();
+        Intent editTask = new Intent(HomeActivity.this, EditTaskActivity.class);
+        editTask.putExtra("Task", Task);
+        editTask.putExtra("Title", taskModelList.get(position).getTitle());
+        editTask.putExtra("Description", taskModelList.get(position).getDescription());
+        editTask.putExtra("Date", taskModelList.get(position).getDate());
+        editTask.putExtra("Time", taskModelList.get(position).getTime());
+        editTask.putExtra("Status", taskModelList.get(position).isComplete());
+        startActivity(editTask);
     }
 }

@@ -65,7 +65,7 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="2dp"
         android:visibility="gone"
-        android:background="@drawable/et_white_bg"
+        android:background="@drawable/et_whitehalfround_bg"
         android:rotation="180"
         app:layout_constraintTop_toBottomOf="@+id/viewTaskView"
         app:layout_constraintEnd_toEndOf="parent"

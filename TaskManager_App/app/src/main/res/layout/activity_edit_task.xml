@@ -56,7 +56,6 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/et_white_bg"
-        android:text="Webinar on Gradle API"
         android:paddingVertical="12dp"
         android:paddingStart="20dp"
         android:textSize="16sp"
@@ -107,7 +106,6 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/et_white_bg"
-        android:text="24 March 2021"
         android:paddingVertical="12dp"
         android:paddingStart="20dp"
         android:textSize="16sp"
@@ -123,11 +121,11 @@
         android:layout_marginBottom="8dp"
         android:text="Task Status`"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditTaskPending"
-        app:layout_constraintStart_toStartOf="@+id/btnEditTaskPending" />
+        app:layout_constraintBottom_toTopOf="@+id/btnRadioEditTaskPending"
+        app:layout_constraintStart_toStartOf="@+id/btnRadioEditTaskPending" />
 
     <RadioButton
-        android:id="@+id/btnEditTaskPending"
+        android:id="@+id/btnRadioEditTaskPending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
@@ -141,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
 
     <RadioButton
-        android:id="@+id/btnEditTaskCompleted"
+        android:id="@+id/btnRadioEditTaskCompleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="80dp"
@@ -151,7 +149,7 @@
         android:paddingVertical="12dp"
         android:paddingStart="10dp"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/btnEditTaskPending"
+        app:layout_constraintStart_toEndOf="@id/btnRadioEditTaskPending"
         app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
 
     <View
@@ -163,7 +161,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditTaskPending" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRadioEditTaskPending" />
 
     <TextView
         android:id="@+id/tvEditTaskDelete"
@@ -171,11 +169,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="6dp"
         android:drawableStart="@drawable/delete_red_bg"
-        android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
         android:text="Delete task"
         android:textColor="#FF6666"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditTaskApply"
         app:layout_constraintStart_toStartOf="@+id/viewEditTaskLine"
         app:layout_constraintTop_toBottomOf="@+id/viewEditTaskLine" />
 

@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     private ArrayList<TaskModel> taskModelList;
+    private ItemClickListener itemClickListener;
 
-    public TaskAdapter(ArrayList<TaskModel> taskModelArrayList){
+    public TaskAdapter(ArrayList<TaskModel> taskModelArrayList, ItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
         taskModelList = taskModelArrayList;
     }
 
@@ -21,7 +23,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item_layout, parent, false);
-        return new TaskViewHolder(view);
+        return new TaskViewHolder(view, itemClickListener);
     }
 
     @Override
