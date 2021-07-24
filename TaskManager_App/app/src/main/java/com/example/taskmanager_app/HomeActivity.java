@@ -112,7 +112,6 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         editTask.putExtra("Title", taskModelList.get(position).getTitle());
         editTask.putExtra("Description", taskModelList.get(position).getDescription());
         editTask.putExtra("Date", taskModelList.get(position).getDate());
-        editTask.putExtra("Time", taskModelList.get(position).getTime());
         editTask.putExtra("Status", taskModelList.get(position).isComplete());
         startActivity(editTask);
     }

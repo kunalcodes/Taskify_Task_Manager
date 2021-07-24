@@ -40,7 +40,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         username = PreferenceHelper.getStringFromPreference(CreateTaskActivity.this, "Username");
         firebaseDatabase = FirebaseDatabase.getInstance();
         CurrentUser = username.replace(".", "");
-        DatabaseReference node = firebaseDatabase.getReference("Users/"+CurrentUser+"/Tasks");
+        DatabaseReference node = firebaseDatabase.getReference("Users/" + CurrentUser + "/Tasks");
 
         initViews();
         mEtCreateTaskDate.setOnClickListener(new View.OnClickListener() {
@@ -86,12 +86,11 @@ public class CreateTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isTitleValid() && isDateValid() && isStatusValid()) {
                     String Title = mEtCreateTaskTitle.getText().toString();
-                    String Date = mEtCreateTaskDate.getText().toString().substring(0, 8);
+                    String Date = mEtCreateTaskDate.getText().toString();
                     String Description = mEtCreateTaskDescription.getText().toString();
-                    String Time = mEtCreateTaskDate.getText().toString().substring(12);
                     String Task = mEtCreateTaskTitle.getText().toString().trim();
                     boolean isComplete = mBtnRadioCreateTaskCompleted.isChecked();
-                    taskModel = new TaskModel(Title, Description, Date, Time, isComplete);
+                    taskModel = new TaskModel(Title, Description, Date, isComplete);
                     node.child(Task).setValue(taskModel);
                     Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
                     startActivity(setNewTask);
@@ -101,7 +100,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
     private boolean isStatusValid() {
-        if (mBtnRadioCreateTaskCompleted.isChecked() || mBtnRadioCreateTaskPending.isChecked()){
+        if (mBtnRadioCreateTaskCompleted.isChecked() || mBtnRadioCreateTaskPending.isChecked()) {
             return true;
         } else {
             Toast.makeText(CreateTaskActivity.this, "Please select the status", Toast.LENGTH_SHORT).show();
@@ -110,7 +109,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
     private boolean isDateValid() {
-        if (mEtCreateTaskDate.getText().toString().length() != 0){
+        if (mEtCreateTaskDate.getText().toString().length() != 0) {
             return true;
         } else {
             mEtCreateTaskDate.setError("Please select date and time");
@@ -119,7 +118,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
     private boolean isTitleValid() {
-        if (mEtCreateTaskTitle.getText().toString().length() != 0){
+        if (mEtCreateTaskTitle.getText().toString().length() != 0) {
             return true;
         } else {
             mEtCreateTaskTitle.setError("Title can not be empty");
@@ -141,7 +140,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
 
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yy :: HH:mm");
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd :: HH:mm");
                         mEtCreateTaskDate.setText(simpleDateFormat.format(calendar.getTime()));
                     }
                 };

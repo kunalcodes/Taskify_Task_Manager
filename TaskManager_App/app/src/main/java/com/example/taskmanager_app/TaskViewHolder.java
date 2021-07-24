@@ -41,14 +41,20 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(TaskModel taskModel) {
-        mTvTaskDate.setText(taskModel.getDate() + "");
+        //StringBuilder sb=new StringBuilder(taskModel.getDate().substring(0,10));
+
+        String date = taskModel.getDate().substring(8, 10) + taskModel.getDate().substring(7, 8) +
+                taskModel.getDate().substring(5, 7) + taskModel.getDate().substring(4, 5) +
+                taskModel.getDate().substring(0, 4);
+        String time = taskModel.getDate().substring(14);
+        mTvTaskDate.setText(date + "");
         mTvTaskTitle.setText(taskModel.getTitle());
-        mTvTaskTime.setText(taskModel.getTime() + "");
+        mTvTaskTime.setText(time + "");
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mBtnRadioTask.isSelected()){
+                if (mBtnRadioTask.isSelected()) {
                     mBtnRadioTask.setSelected(false);
                     mBtnRadioTask.setChecked(false);
                 } else {

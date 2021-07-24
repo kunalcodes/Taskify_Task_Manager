@@ -4,16 +4,14 @@ public class TaskModel {
     private String title;
     private String description;
     private String date;
-    private String time;
     private boolean isComplete;
 
     public TaskModel(){}
 
-    public TaskModel(String title, String description, String date, String time, boolean isComplete) {
+    public TaskModel(String title, String description, String date, boolean isComplete) {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.time = time;
         this.isComplete = isComplete;
     }
 
@@ -27,10 +25,6 @@ public class TaskModel {
 
     public String getDate() {
         return date;
-    }
-
-    public String getTime() {
-        return time;
     }
 
     public boolean isComplete() {

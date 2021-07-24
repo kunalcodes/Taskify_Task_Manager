@@ -50,13 +50,13 @@ public class EditTaskActivity extends AppCompatActivity {
         String Title = intent.getStringExtra("Title");
         String Description = intent.getStringExtra("Description");
         String Date = intent.getStringExtra("Date");
-        String Time = intent.getStringExtra("Time");
+
         boolean Status = intent.getBooleanExtra("Status", true);
         initViews();
 
         mEtEditTaskTitle.setText(Title);
         mEtEditTaskDescription.setText(Description);
-        mEtEditTaskDate.setText(Date +" :: " + Time);
+        mEtEditTaskDate.setText(Date);
         mBtnRadioEditTaskPending.setChecked(false);
         mBtnRadioEditTaskCompleted.setChecked(false);
 
@@ -112,12 +112,11 @@ public class EditTaskActivity extends AppCompatActivity {
                 if (isTitleValid() && isDateValid() && isStatusValid()) {
                     node.child(Task).removeValue();
                     String Title = mEtEditTaskTitle.getText().toString();
-                    String Date = mEtEditTaskDate.getText().toString().substring(0, 8);
+                    String Date = mEtEditTaskDate.getText().toString();
                     String Description = mEtEditTaskDescription.getText().toString();
-                    String Time = mEtEditTaskDate.getText().toString().substring(12);
                     String newTask = mEtEditTaskTitle.getText().toString().trim();
                     boolean isComplete = mBtnRadioEditTaskCompleted.isChecked();
-                    taskModel = new TaskModel(Title, Description, Date, Time, isComplete);
+                    taskModel = new TaskModel(Title, Description, Date, isComplete);
                     node.child(newTask).setValue(taskModel);
                     Intent editTask = new Intent(EditTaskActivity.this, HomeActivity.class);
                     startActivity(editTask);
@@ -167,7 +166,7 @@ public class EditTaskActivity extends AppCompatActivity {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
 
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yy :: HH:mm");
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd :: HH:mm");
                         mEtCreateTaskDate.setText(simpleDateFormat.format(calendar.getTime()));
                     }
                 };
