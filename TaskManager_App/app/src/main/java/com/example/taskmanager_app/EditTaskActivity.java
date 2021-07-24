@@ -47,19 +47,15 @@ public class EditTaskActivity extends AppCompatActivity {
         String Description = intent.getStringExtra("Description");
         String Date = intent.getStringExtra("Date");
         String Time = intent.getStringExtra("Time");
-        boolean Status = intent.getBooleanExtra("Status", false);
+        boolean Status = intent.getBooleanExtra("Status", true);
         initViews();
 
         mEtEditTaskTitle.setText(Title);
         mEtEditTaskDescription.setText(Description);
         mEtEditTaskDate.setText(Date +" :: " + Time);
-        if (Status){
-            mBtnRadioEditTaskPending.setChecked(false);
-            mBtnRadioEditTaskCompleted.setChecked(true);
-        } else {
-            mBtnRadioEditTaskPending.setChecked(true);
-            mBtnRadioEditTaskCompleted.setChecked(false);
-        }
+        mBtnRadioEditTaskPending.setChecked(false);
+        mBtnRadioEditTaskCompleted.setChecked(false);
+
         mEtEditTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +112,7 @@ public class EditTaskActivity extends AppCompatActivity {
                     String Description = mEtEditTaskDescription.getText().toString();
                     String Time = mEtEditTaskDate.getText().toString().substring(12);
                     String newTask = mEtEditTaskTitle.getText().toString().trim();
-                    boolean isComplete = false;
+                    boolean isComplete = mBtnRadioEditTaskCompleted.isChecked();
                     taskModel = new TaskModel(Title, Description, Date, Time, isComplete);
                     node.child(newTask).setValue(taskModel);
                     Intent editTask = new Intent(EditTaskActivity.this, HomeActivity.class);

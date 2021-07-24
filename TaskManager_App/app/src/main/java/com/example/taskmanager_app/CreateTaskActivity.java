@@ -87,7 +87,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                     String Description = mEtCreateTaskDescription.getText().toString();
                     String Time = mEtCreateTaskDate.getText().toString().substring(12);
                     String Task = mEtCreateTaskTitle.getText().toString().trim();
-                    boolean isComplete = false;
+                    boolean isComplete = mBtnRadioCreateTaskCompleted.isChecked();
                     taskModel = new TaskModel(Title, Description, Date, Time, isComplete);
                     node.child(Task).setValue(taskModel);
                     Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
