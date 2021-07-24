@@ -31,15 +31,19 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText mEtEditTaskDate;
     private TaskModel taskModel;
     private TextView mTvEditTaskDelete;
+    private String username;
     private FirebaseDatabase firebaseDatabase;
+    private String CurrentUser;
     private String Task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
+        username = PreferenceHelper.getStringFromPreference(EditTaskActivity.this, "Username");
         firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
+        CurrentUser = username.replace(".", "");
+        DatabaseReference node = firebaseDatabase.getReference("Users/"+CurrentUser+"/Tasks");
 
         Intent intent = getIntent();
         Task = intent.getStringExtra("Task");

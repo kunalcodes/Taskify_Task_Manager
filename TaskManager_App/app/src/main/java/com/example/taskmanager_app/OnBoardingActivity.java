@@ -17,6 +17,13 @@ public class OnBoardingActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
+
+        int LoginStatus =PreferenceHelper.getIntFromPreference(OnBoardingActivity.this,"LoginStatus");
+        if (LoginStatus == 1){
+            Intent goToHome = new Intent(OnBoardingActivity.this, HomeActivity.class);
+            startActivity(goToHome);
+        }
+
         initViews();
         mTvOnBoardingLogin.setOnClickListener(this);
         mBtnOnBoardingCreateAccount.setOnClickListener(this);

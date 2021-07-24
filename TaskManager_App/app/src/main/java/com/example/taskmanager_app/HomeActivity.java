@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     private RecyclerView recyclerView;
     private TextView mTvHomeExHeyUser;
     private String username;
+    private String CurrentUser;
     private Button mBtnHomeExAdd;
     private TaskAdapter taskAdapter;
     private ImageView mIvHomeExUser;
@@ -36,10 +37,10 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        username = PreferenceHelper.getStringFromPreference(HomeActivity.this, "Username");
+        CurrentUser = username.replace(".", "");
         firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
-        node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
-        Intent intent = getIntent();
-        username = intent.getStringExtra("Username");
+        node = firebaseDatabase.getReference("Users/"+CurrentUser+"/Tasks");
         initViews();
         setRecyclerViewAdapter();
         buildRecyclerViewData();

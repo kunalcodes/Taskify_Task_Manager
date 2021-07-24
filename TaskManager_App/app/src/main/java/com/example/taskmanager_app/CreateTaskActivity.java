@@ -29,15 +29,18 @@ public class CreateTaskActivity extends AppCompatActivity {
     private EditText mEtCreateTaskDescription;
     private EditText mEtCreateTaskDate;
     private TaskModel taskModel;
+    private String username;
     private FirebaseDatabase firebaseDatabase;
+    private String CurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
-
+        username = PreferenceHelper.getStringFromPreference(CreateTaskActivity.this, "Username");
         firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
+        CurrentUser = username.replace(".", "");
+        DatabaseReference node = firebaseDatabase.getReference("Users/"+CurrentUser+"/Tasks");
 
         initViews();
         mEtCreateTaskDate.setOnClickListener(new View.OnClickListener() {

@@ -153,10 +153,16 @@
         app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements"
         app:srcCompat="@drawable/achievements" />
 
-    <View
-        android:id="@+id/viewProfileSignOut"
+    <Button
+        android:id="@+id/btnProfileSignOut"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:text="Sign Out"
+        android:textColor="#FF6666"
+        android:textAlignment="viewStart"
+        android:paddingHorizontal="20dp"
+        android:textSize="16sp"
+        android:textAllCaps="false"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/et_white_bg"
@@ -164,17 +170,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewProfileAchievements" />
 
-    <TextView
-        android:id="@+id/tvProfileSignOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Sign Out"
-        android:textColor="#FF6666"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewProfileSignOut"
-        app:layout_constraintStart_toStartOf="@+id/viewProfileSignOut"
-        app:layout_constraintTop_toTopOf="@+id/viewProfileSignOut" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
