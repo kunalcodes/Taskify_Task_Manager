@@ -95,20 +95,64 @@
         android:id="@+id/tvProfileCompletionRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:text="75%"
         android:textColor="#FB9F33"
-        android:textStyle="bold"
         android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewProfileTaskCompleted"
-        app:layout_constraintEnd_toStartOf="@+id/doNutChart"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted"
-        app:layout_constraintTop_toTopOf="@+id/viewProfileTaskCompleted" />
+        app:layout_constraintTop_toTopOf="@+id/doNutChart" />
 
-    <com.github.mikephil.charting.charts.PieChart
+    <View
+        android:id="@+id/viewLegendCompleted"
+        android:layout_width="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="15dp"
+        android:background="#4263EC"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileCompletionRate"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileCompletionRate" />
+
+    <TextView
+        android:id="@+id/tvLegendCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        android:layout_marginLeft="10dp"
+        android:textColor="#4263EC"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewLegendCompleted"
+        app:layout_constraintStart_toEndOf="@+id/viewLegendCompleted"
+        app:layout_constraintTop_toTopOf="@+id/viewLegendCompleted" />
+
+    <View
+        android:id="@+id/viewLegendPending"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FB9F33"
+        app:layout_constraintBottom_toBottomOf="@+id/doNutChart"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileCompletionRate"
+        app:layout_constraintTop_toBottomOf="@+id/tvLegendCompleted" />
+
+    <TextView
+        android:id="@+id/tvLegendPending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pending"
+        android:layout_marginLeft="10dp"
+        android:textColor="#FB9F33"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewLegendPending"
+        app:layout_constraintStart_toEndOf="@+id/viewLegendCompleted"
+        app:layout_constraintTop_toTopOf="@+id/viewLegendPending" />
+
+    <org.eazegraph.lib.charts.PieChart
         android:id="@+id/doNutChart"
-        android:layout_width="179dp"
-        android:layout_height="188dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewProfileTaskCompleted"
         app:layout_constraintEnd_toEndOf="@+id/viewProfileTaskCompleted"
         app:layout_constraintTop_toTopOf="@+id/viewProfileTaskCompleted" />
 

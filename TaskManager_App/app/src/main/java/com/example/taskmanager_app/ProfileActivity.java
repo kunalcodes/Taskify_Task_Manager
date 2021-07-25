@@ -12,16 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,8 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
         mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
         mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
 
-        int percentage = (int)((completedTaskNumber*100)/totalTaskNumber);
-        mTvProfileCompletionRate.setText(percentage+"%");
+        int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
+        mTvProfileCompletionRate.setText(percentage + "%");
 
         mViewProfileBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,23 +103,26 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        PieChart pieChart=findViewById(R.id.doNutChart);
+        PieChart pieChart = findViewById(R.id.doNutChart);
+        pieChart.addPieSlice(new PieModel("Pending Tasks",pendingTaskNumber,Color.parseColor("#FB9F33")));
+        pieChart.addPieSlice(new PieModel("Completed Tasks",completedTaskNumber,Color.parseColor("#4263EC")));
+        pieChart.startAnimation();
 
-        ArrayList<PieEntry> tasks=new ArrayList<>();
-        tasks.add(new PieEntry(pendingTaskNumber,""));
-        tasks.add(new PieEntry(completedTaskNumber,""));
-
-        PieDataSet pieDataSet=new PieDataSet(tasks,"");
-        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        pieDataSet.setValueTextColor(Color.BLACK);
-        pieDataSet.setValueTextSize(16f);
-
-        PieData pieData=new PieData(pieDataSet);
-
-        pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.animate();
-        pieChart.setHoleRadius(80);
+//        ArrayList<PieEntry> tasks = new ArrayList<>();
+//        tasks.add(new PieEntry(pendingTaskNumber, ""));
+//        tasks.add(new PieEntry(completedTaskNumber, ""));
+//
+//        PieDataSet pieDataSet = new PieDataSet(tasks, "");
+//        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+//        pieDataSet.setValueTextColor(Color.BLACK);
+//        pieDataSet.setValueTextSize(16f);
+//
+//        PieData pieData = new PieData(pieDataSet);
+//
+//        pieChart.setData(pieData);
+//        pieChart.getDescription().setEnabled(false);
+//        pieChart.animate();
+//        pieChart.setHoleRadius(80);
     }
 
     private void initViews() {
