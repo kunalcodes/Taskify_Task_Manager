@@ -40,14 +40,17 @@ public class ProfileActivity extends AppCompatActivity {
     private Button mBtnProfileSignOut;
     private TextView mTvProfileTotalTaskData;
     private TextView mTvProfileCompletedTaskData;
+    private TextView mTvProfileCompletionRate;
     private String username;
     private String CurrentUser;
     private TextView mTvProfilePendingTaskData;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference node;
-    private int totalTaskNumber = 0;
-    private int completedTaskNumber = 0;
-    private int pendingTaskNumber = 0;
+    private View mViewProfileBack;
+    private TextView mTvProfileEmailId;
+    private int totalTaskNumber = 10;
+    private int completedTaskNumber = 7;
+    private int pendingTaskNumber = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +89,16 @@ public class ProfileActivity extends AppCompatActivity {
         mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
         mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
 
+        int percentage = (int)((completedTaskNumber*100)/totalTaskNumber);
+        mTvProfileCompletionRate.setText(percentage+"%");
+
+        mViewProfileBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToHome = new Intent(ProfileActivity.this, HomeActivity.class);
+                startActivity(goToHome);
+            }
+        });
 
         mBtnProfileSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +113,11 @@ public class ProfileActivity extends AppCompatActivity {
         PieChart pieChart=findViewById(R.id.doNutChart);
 
         ArrayList<PieEntry> tasks=new ArrayList<>();
-        tasks.add(new PieEntry(10,"completed"));
-        tasks.add(new PieEntry(7,"Not completed"));
+        tasks.add(new PieEntry(pendingTaskNumber,""));
+        tasks.add(new PieEntry(completedTaskNumber,""));
 
         PieDataSet pieDataSet=new PieDataSet(tasks,"");
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
 
@@ -112,15 +125,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Today's Tasks");
         pieChart.animate();
         pieChart.setHoleRadius(80);
     }
 
     private void initViews() {
+        mTvProfileEmailId = findViewById(R.id.tvProfileEmailId);
+        mViewProfileBack = findViewById(R.id.viewProfileBack);
         mBtnProfileSignOut = findViewById(R.id.btnProfileSignOut);
         mTvProfileTotalTaskData = findViewById(R.id.tvProfileTotalTaskData);
         mTvProfileCompletedTaskData = findViewById(R.id.tvProfileCompletedTaskData);
         mTvProfilePendingTaskData = findViewById(R.id.tvProfilePendingTaskData);
+        mTvProfileCompletionRate = findViewById(R.id.tvProfileCompletionRate);
+        mTvProfileEmailId.setText(username);
     }
 }

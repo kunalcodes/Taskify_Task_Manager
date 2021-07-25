@@ -31,34 +31,37 @@
         android:id="@+id/tvProfileHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:layout_marginVertical="10dp"
         android:text="Profile"
         android:textColor="@color/white"
-        android:layout_margin="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/viewProfileBack"
-        app:layout_constraintStart_toEndOf="@+id/viewProfileBack"
+        app:layout_constraintEnd_toEndOf="@+id/viewProfileBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileBlueBar"
         app:layout_constraintTop_toTopOf="@+id/viewProfileBack" />
 
     <TextView
         android:id="@+id/tvProfileEmailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="sofiaborg@gmail.com"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileHead"
         app:layout_constraintStart_toStartOf="@+id/tvProfileHead"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileHead" />
+        app:layout_constraintTop_toBottomOf="@+id/ivHomeExUser" />
 
     <ImageView
         android:id="@+id/ivHomeExUser"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewProfileBlueBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileBlueBar"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileHead"
         app:srcCompat="@drawable/ic_user" />
 
 
@@ -67,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="130dp"
         android:background="@drawable/et_white_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
@@ -78,43 +81,35 @@
         android:id="@+id/tvProfileTaskCompleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Task Completed"
-        android:textColor="@color/black"
-        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Task Completion Rate"
+        android:textColor="#4263EC"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/viewProfileTaskCompleted"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted"
-        app:layout_constraintTop_toBottomOf="@+id/viewProfileBlueBar" />
+        app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted" />
+
 
     <TextView
-        android:id="@+id/tvProfileWeek"
+        android:id="@+id/tvProfileCompletionRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:drawableEnd="@drawable/ic_drop_arrow"
-        android:drawablePadding="10dp"
-        android:text="Week"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/viewProfileTaskCompleted"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toEndOf="@+id/tvProfileTaskCompleted"
-        app:layout_constraintTop_toBottomOf="@+id/viewProfileBlueBar"
-        app:layout_constraintVertical_bias="0.367" />
-
+        android:text="75%"
+        android:textColor="#FB9F33"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewProfileTaskCompleted"
+        app:layout_constraintEnd_toStartOf="@+id/doNutChart"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted"
+        app:layout_constraintTop_toTopOf="@+id/viewProfileTaskCompleted" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/doNutChart"
-        android:layout_width="230dp"
-        android:layout_height="171dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewProfileTaskCompleted"
+        android:layout_width="179dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/viewProfileTaskCompleted"
-
         app:layout_constraintTop_toTopOf="@+id/viewProfileTaskCompleted" />
 
     <View
@@ -122,10 +117,9 @@
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/et_white_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewProfileTaskCompleted" />
 
@@ -136,8 +130,8 @@
         android:layout_margin="10dp"
         android:text="Dashboard"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textColor="#FB9F33"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
         app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements"
         app:layout_constraintTop_toTopOf="@+id/viewProfileAchievements" />
@@ -147,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="4000"
-        android:textColor="@color/black"
+        android:textColor="#4263EC"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
         app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine1"
@@ -181,7 +175,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3000"
-        android:textColor="@color/black"
+        android:textColor="#4263EC"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
         app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine2"
@@ -215,7 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000"
-        android:textColor="@color/black"
+        android:textColor="#4263EC"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine2"
         app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
@@ -238,16 +232,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="136dp"
-        android:background="@drawable/et_white_bg"
-        android:paddingHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_login_bg"
+        android:paddingHorizontal="25dp"
         android:text="Sign Out"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textColor="#FF6666"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewProfileAchievements" />
 
