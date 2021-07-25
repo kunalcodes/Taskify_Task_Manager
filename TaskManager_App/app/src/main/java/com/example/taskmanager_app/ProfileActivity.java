@@ -1,33 +1,92 @@
 package com.example.taskmanager_app;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private ArrayList<TaskModel> taskModelList = new ArrayList<>();
     private Button mBtnProfileSignOut;
+    private TextView mTvProfileTotalTaskData;
+    private TextView mTvProfileCompletedTaskData;
+    private String username;
+    private String CurrentUser;
+    private TextView mTvProfilePendingTaskData;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference node;
+    private int totalTaskNumber = 0;
+    private int completedTaskNumber = 0;
+    private int pendingTaskNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        username = PreferenceHelper.getStringFromPreference(ProfileActivity.this, "Username");
+        CurrentUser = username.replace(".", "");
+        firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
+        node = firebaseDatabase.getReference("Users/" + CurrentUser + "/Tasks");
+        initViews();
 
-        mBtnProfileSignOut = findViewById(R.id.btnProfileSignOut);
+        node.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //taskModelList.clear();
+                for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
+
+                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    //taskModelList.add(taskModel);
+                    totalTaskNumber += 1;
+                    if (taskModel.getComplete()) {
+                        completedTaskNumber += 1;
+                    } else {
+                        pendingTaskNumber += 1;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        mTvProfileTotalTaskData.setText(totalTaskNumber + "");
+        mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
+        mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
+
+
         mBtnProfileSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,38 +97,30 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        BarChart barChart=findViewById(R.id.barChart);
-        ArrayList<BarEntry> taskDone=new ArrayList<>();
-        taskDone.add(new BarEntry(1,4));
-        taskDone.add(new BarEntry(2,9));
-        taskDone.add(new BarEntry(3,5));
-        taskDone.add(new BarEntry(4,6));
-        taskDone.add(new BarEntry(5,2));
-        taskDone.add(new BarEntry(6,8));
-        taskDone.add(new BarEntry(7,3));
+        PieChart pieChart=findViewById(R.id.doNutChart);
 
-        ArrayList<String>xAxisLabel=new ArrayList<>();
-        xAxisLabel.add("Mon");
-        xAxisLabel.add("Mon");
-        xAxisLabel.add("Tue");
-        xAxisLabel.add("Wed");
-        xAxisLabel.add("Thu");
-        xAxisLabel.add("Fri");
-        xAxisLabel.add("Sat");
-        xAxisLabel.add("Sun");
+        ArrayList<PieEntry> tasks=new ArrayList<>();
+        tasks.add(new PieEntry(10,"completed"));
+        tasks.add(new PieEntry(7,"Not completed"));
 
-        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
+        PieDataSet pieDataSet=new PieDataSet(tasks,"");
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(16f);
 
-        BarDataSet barDataSet=new BarDataSet(taskDone,"taskDone");
-        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        PieData pieData=new PieData(pieDataSet);
 
-        BarData barData=new BarData(barDataSet);
+        pieChart.setData(pieData);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("Today's Tasks");
+        pieChart.animate();
+        pieChart.setHoleRadius(80);
+    }
 
-        barChart.setFitBars(true);
-        barChart.setData(barData);
-        barChart.getDescription().setText("Bar chart Example");
-        barChart.animateY(3000);
+    private void initViews() {
+        mBtnProfileSignOut = findViewById(R.id.btnProfileSignOut);
+        mTvProfileTotalTaskData = findViewById(R.id.tvProfileTotalTaskData);
+        mTvProfileCompletedTaskData = findViewById(R.id.tvProfileCompletedTaskData);
+        mTvProfilePendingTaskData = findViewById(R.id.tvProfilePendingTaskData);
     }
 }
