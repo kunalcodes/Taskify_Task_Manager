@@ -30,6 +30,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText mEtEditTaskDescription;
     private EditText mEtEditTaskDate;
     private TaskModel taskModel;
+    private View mViewEditTaskBack;
     private TextView mTvEditTaskDelete;
     private String username;
     private FirebaseDatabase firebaseDatabase;
@@ -59,6 +60,14 @@ public class EditTaskActivity extends AppCompatActivity {
         mEtEditTaskDate.setText(Date);
         mBtnRadioEditTaskPending.setChecked(false);
         mBtnRadioEditTaskCompleted.setChecked(false);
+
+        mViewEditTaskBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editTask = new Intent(EditTaskActivity.this, HomeActivity.class);
+                startActivity(editTask);
+            }
+        });
 
         mEtEditTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +189,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-
+        mViewEditTaskBack = findViewById(R.id.viewEditTaskBack);
         mBtnEditTaskApply = findViewById(R.id.btnEditTaskApply);
         mEtEditTaskDate = findViewById(R.id.etEditTaskDate);
         mEtEditTaskTitle = findViewById(R.id.etEditTaskTitle);

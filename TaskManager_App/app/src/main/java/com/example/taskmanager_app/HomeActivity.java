@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     private Button mBtnHomeExAdd;
     private Switch mSwHomeShowPrevious;
     private TaskAdapter taskAdapter;
+    private TextView mTvHomeFetchingData;
     private ImageView mIvHomeExUser;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference node;
@@ -58,7 +59,9 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         LocalDateTime now = LocalDateTime.now();
         currentTime = dtf.format(now);
         initViews();
+
         setRecyclerViewAdapter();
+        mTvHomeFetchingData.setVisibility(View.VISIBLE);
         buildRecyclerViewData();
         mSwHomeShowPrevious.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -128,6 +131,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
                     }
 
                 }
+                mTvHomeFetchingData.setVisibility(View.INVISIBLE);
                 taskAdapter.notifyDataSetChanged();
             }
 
@@ -139,6 +143,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     }
 
     private void initViews() {
+        mTvHomeFetchingData = findViewById(R.id.tvHomeFetchingData);
         mIvHomeExUser = findViewById(R.id.ivHomeExUser);
         recyclerView = findViewById(R.id.recyclerView);
         mBtnHomeExAdd = findViewById(R.id.btnHomeExAdd);

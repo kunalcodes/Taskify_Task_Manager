@@ -30,6 +30,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     private EditText mEtCreateTaskDate;
     private TaskModel taskModel;
     private String username;
+    private View mViewCreateTaskBack;
     private FirebaseDatabase firebaseDatabase;
     private String CurrentUser;
 
@@ -43,6 +44,14 @@ public class CreateTaskActivity extends AppCompatActivity {
         DatabaseReference node = firebaseDatabase.getReference("Users/" + CurrentUser + "/Tasks");
 
         initViews();
+        mViewCreateTaskBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
+                startActivity(setNewTask);
+            }
+        });
+
         mEtCreateTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +163,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        mViewCreateTaskBack = findViewById(R.id.viewCreateTaskBack);
         mBtnCreateTaskAdd = findViewById(R.id.btnCreateTaskAdd);
         mEtCreateTaskDate = findViewById(R.id.etCreateTaskDate);
         mEtCreateTaskTitle = findViewById(R.id.etCreateTaskTitle);

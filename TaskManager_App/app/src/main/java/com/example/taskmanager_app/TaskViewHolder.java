@@ -99,8 +99,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mTvTaskDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mBtnRadioTask.setChecked(false);
                 itemClickListener.onDeleteClicked(getAdapterPosition());
             }
+
         });
 
         mTvTaskUpdate.setOnClickListener(new View.OnClickListener() {

@@ -27,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnSignUpCreateAccount;
     private TextView mTvSignUpLoadingText;
     private FirebaseAuth mAuth;
+    private View mViewSignUpBack;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference node;
     private String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -38,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
         initViews();
         mBtnSignUpCreateAccount.setOnClickListener(this);
+        mViewSignUpBack.setOnClickListener(this);
 
     }
 
@@ -47,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mEtSignUpRePassword = findViewById(R.id.etSignUpRePassword);
         mBtnSignUpCreateAccount = findViewById(R.id.btnSignUpCreateAccount);
         mTvSignUpLoadingText = findViewById(R.id.tvSignUpLoadingText);
+        mViewSignUpBack = findViewById(R.id.viewSignUpBack);
     }
 
     @Override
@@ -83,6 +86,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 }
                             });
                 }
+                break;
+            case R.id.viewSignUpBack:
+                Intent goToOnBoarding = new Intent(SignUpActivity.this, OnBoardingActivity.class);
+                startActivity(goToOnBoarding);
                 break;
         }
     }

@@ -23,6 +23,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private EditText mEtLogInEmail;
     private EditText mEtLogInPassword;
     private Button mBtnLogIn;
+    private View mViewLogInBack;
     private TextView mTvLogInLoadingText;
     private FirebaseAuth mAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -36,6 +37,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
         initViews();
         mBtnLogIn.setOnClickListener(this);
+        mViewLogInBack.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -43,6 +45,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         mEtLogInPassword = findViewById(R.id.etLogInPassword);
         mBtnLogIn = findViewById(R.id.btnLogIn);
         mTvLogInLoadingText = findViewById(R.id.tvLogInLoadingText);
+        mViewLogInBack = findViewById(R.id.viewLogInBack);
     }
 
     @Override
@@ -82,21 +85,25 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     break;
                 }
                 break;
+            case R.id.viewLogInBack:
+                Intent goToOnBoarding = new Intent(LogInActivity.this, OnBoardingActivity.class);
+                startActivity(goToOnBoarding);
+                break;
         }
     }
 
     private boolean isPasswordValid() {
         if (mEtLogInPassword.getText().toString().length() >= 6) {
-                return true;
-            } else {
-                mEtLogInPassword.setError("Password should contain at least 6 characters");
-                return false;
-            }
+            return true;
+        } else {
+            mEtLogInPassword.setError("Password should contain at least 6 characters");
+            return false;
+        }
     }
 
     private boolean isEmailValid() {
         if (mEtLogInEmail.getText().toString().length() >= 1 &&
-                mEtLogInEmail.getText().toString().matches(emailRegex)){
+                mEtLogInEmail.getText().toString().matches(emailRegex)) {
             return true;
         } else {
             mEtLogInEmail.setError("Enter a valid email");
