@@ -1,15 +1,19 @@
 package com.example.taskmanager_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class HomeActivity extends AppCompatActivity implements ItemClickListener {
 
@@ -28,11 +37,14 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     private String username;
     private String CurrentUser;
     private Button mBtnHomeExAdd;
+    private Switch mSwHomeShowPrevious;
     private TaskAdapter taskAdapter;
     private ImageView mIvHomeExUser;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference node;
+    String currentTime;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +53,18 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         CurrentUser = username.replace(".", "");
         firebaseDatabase = FirebaseDatabase.getInstance("https://taskmanagerapp-1407d-default-rtdb.firebaseio.com/");
         node = firebaseDatabase.getReference("Users/"+CurrentUser+"/Tasks");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd :: HH:mm");
+        LocalDateTime now = LocalDateTime.now();
+        currentTime = dtf.format(now);
         initViews();
         setRecyclerViewAdapter();
         buildRecyclerViewData();
-
+        mSwHomeShowPrevious.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                buildRecyclerViewData();
+            }
+        });
         mIvHomeExUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,14 +90,41 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
 
     private void buildRecyclerViewData() {
         node.addValueEventListener(new ValueEventListener() {
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 taskModelList.clear();
 
+
                 for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
 
                     TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
-                    taskModelList.add(taskModel);
+                    String taskDate = taskModel.getDate().substring(0,10);
+                    currentTime = currentTime.substring(0,10);
+                    if (!mSwHomeShowPrevious.isChecked()){
+                        if (LocalDate.parse(taskDate).isAfter(LocalDate.parse(currentTime))){
+                            taskModelList.add(taskModel);
+                            Collections.sort(taskModelList, new Comparator<TaskModel>() {
+                                @Override
+                                public int compare(TaskModel o1, TaskModel o2) {
+                                    return o1.getDate().compareToIgnoreCase(o2.getDate());
+                                }
+                            });
+                        }
+                    } else {
+                        if (LocalDate.parse(taskDate).isBefore(LocalDate.parse(currentTime))){
+                            taskModelList.add(taskModel);
+                            Collections.sort(taskModelList, new Comparator<TaskModel>() {
+                                @Override
+                                public int compare(TaskModel o1, TaskModel o2) {
+                                    return o1.getDate().compareToIgnoreCase(o2.getDate());
+                                }
+                            });
+                            Collections.reverse(taskModelList);
+                        }
+                    }
+
                 }
                 taskAdapter.notifyDataSetChanged();
             }
@@ -94,6 +141,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         recyclerView = findViewById(R.id.recyclerView);
         mBtnHomeExAdd = findViewById(R.id.btnHomeExAdd);
         mTvHomeExHeyUser = findViewById(R.id.tvHomeExHeyUser);
+        mSwHomeShowPrevious = findViewById(R.id.swHomeShowPrevious);
         mTvHomeExHeyUser.setText("Hey " + username + ",");
     }
 

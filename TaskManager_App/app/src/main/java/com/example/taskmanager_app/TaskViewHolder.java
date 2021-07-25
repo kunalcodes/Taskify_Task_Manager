@@ -1,6 +1,7 @@
 package com.example.taskmanager_app;
 
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -8,7 +9,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Timer;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder {
 
@@ -40,6 +46,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mTvTaskDelete = itemView.findViewById(R.id.tvTaskDelete);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setData(TaskModel taskModel) {
         //StringBuilder sb=new StringBuilder(taskModel.getDate().substring(0,10));
 
@@ -47,6 +54,11 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 taskModel.getDate().substring(5, 7) + taskModel.getDate().substring(4, 5) +
                 taskModel.getDate().substring(0, 4);
         String time = taskModel.getDate().substring(14);
+
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd :: HH:mm");
+//        LocalDateTime now = LocalDateTime.now();
+//        String time = dtf.format(now);
+
         mTvTaskDate.setText(date + "");
         mTvTaskTitle.setText(taskModel.getTitle());
         mTvTaskTime.setText(time + "");
