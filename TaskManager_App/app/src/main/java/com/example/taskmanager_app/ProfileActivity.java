@@ -112,8 +112,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         PieChart pieChart = findViewById(R.id.doNutChart);
-        pieChart.addPieSlice(new PieModel("Pending Tasks",pendingTaskNumber,Color.parseColor("#FB9F33")));
-        pieChart.addPieSlice(new PieModel("Completed Tasks",completedTaskNumber,Color.parseColor("#4263EC")));
+        pieChart.addPieSlice(new PieModel("Pending Tasks",pendingTaskNumber,Color.parseColor("#4263EC")));
+        pieChart.addPieSlice(new PieModel("Completed Tasks",completedTaskNumber,Color.parseColor("#FB9F33")));
         pieChart.startAnimation();
 
 //        ArrayList<PieEntry> tasks = new ArrayList<>();

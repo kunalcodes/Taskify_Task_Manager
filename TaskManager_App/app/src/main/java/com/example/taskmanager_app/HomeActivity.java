@@ -86,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         });
     }
 
+
     private void setRecyclerViewAdapter() {
         taskAdapter = new TaskAdapter(taskModelList, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -134,6 +135,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
                 }
 //                Log.d("Kunal",taskModelList.toString());
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
+
                 taskAdapter.notifyDataSetChanged();
             }
 

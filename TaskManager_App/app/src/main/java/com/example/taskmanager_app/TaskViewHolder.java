@@ -1,5 +1,6 @@
 package com.example.taskmanager_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
@@ -63,16 +65,9 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mTvTaskTime.setText(time + "");
 
 
-//        if (taskModel.getComplete()){
-//            runOnUniThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    if (taskModel.getComplete()){
-//                        mTvCompleted.setVisibility(View.VISIBLE);
-//                    }
-//                }
-//            });
-//        }
+        if (taskModel.getComplete()) {
+            mTvCompleted.setVisibility(View.VISIBLE);
+        }
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +105,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 mBtnRadioTask.setChecked(false);
                 itemClickListener.onDeleteClicked(getAdapterPosition());
             }
-
         });
 
         mTvTaskUpdate.setOnClickListener(new View.OnClickListener() {

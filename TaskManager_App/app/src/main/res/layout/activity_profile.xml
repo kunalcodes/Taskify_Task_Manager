@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:text="75%"
-        android:textColor="#FB9F33"
+        android:textColor="#4263EC"
         android:textSize="50dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted"
