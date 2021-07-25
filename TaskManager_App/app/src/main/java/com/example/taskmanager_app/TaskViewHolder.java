@@ -2,6 +2,7 @@ package com.example.taskmanager_app;
 
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -26,6 +27,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     private View mViewTaskView;
     private TextView mTvTaskUpdate;
     private TextView mTvTaskDelete;
+    private TextView mTvCompleted;
     private ItemClickListener itemClickListener;
 
 
@@ -44,9 +46,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mViewTaskView = itemView.findViewById(R.id.viewTaskView);
         mTvTaskUpdate = itemView.findViewById(R.id.tvTaskUpdate);
         mTvTaskDelete = itemView.findViewById(R.id.tvTaskDelete);
+        mTvCompleted = itemView.findViewById(R.id.tvCompleted);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void setData(TaskModel taskModel) {
         //StringBuilder sb=new StringBuilder(taskModel.getDate().substring(0,10));
 
@@ -55,13 +58,13 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 taskModel.getDate().substring(0, 4);
         String time = taskModel.getDate().substring(14);
 
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd :: HH:mm");
-//        LocalDateTime now = LocalDateTime.now();
-//        String time = dtf.format(now);
-
         mTvTaskDate.setText(date + "");
         mTvTaskTitle.setText(taskModel.getTitle());
         mTvTaskTime.setText(time + "");
+
+        if (taskModel.getComplete()){
+            mTvCompleted.setVisibility(View.VISIBLE);
+        }
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {
             @Override

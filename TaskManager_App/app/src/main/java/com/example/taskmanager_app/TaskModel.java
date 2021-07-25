@@ -27,7 +27,7 @@ public class TaskModel {
         return date;
     }
 
-    public boolean isComplete() {
+    public boolean getComplete() {
         return isComplete;
     }
 }

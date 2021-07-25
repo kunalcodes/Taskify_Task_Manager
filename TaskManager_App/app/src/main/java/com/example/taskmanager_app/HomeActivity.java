@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference node;
     String currentTime;
+    private TextView mTvCompleted;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -143,6 +144,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         mTvHomeExHeyUser = findViewById(R.id.tvHomeExHeyUser);
         mSwHomeShowPrevious = findViewById(R.id.swHomeShowPrevious);
         mTvHomeExHeyUser.setText("Hey " + username + ",");
+        mTvCompleted = findViewById(R.id.tvCompleted);
     }
 
     @Override
@@ -160,7 +162,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
         editTask.putExtra("Title", taskModelList.get(position).getTitle());
         editTask.putExtra("Description", taskModelList.get(position).getDescription());
         editTask.putExtra("Date", taskModelList.get(position).getDate());
-        editTask.putExtra("Status", taskModelList.get(position).isComplete());
+        editTask.putExtra("Status", taskModelList.get(position).getComplete());
         startActivity(editTask);
     }
 }
