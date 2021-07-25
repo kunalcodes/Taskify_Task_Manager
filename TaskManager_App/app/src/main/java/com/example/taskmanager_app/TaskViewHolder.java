@@ -62,7 +62,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mTvTaskTitle.setText(taskModel.getTitle());
         mTvTaskTime.setText(time + "");
 
-        if (taskModel.getComplete()){
+        if (!taskModel.getComplete()){
             mTvCompleted.setVisibility(View.VISIBLE);
         }
 

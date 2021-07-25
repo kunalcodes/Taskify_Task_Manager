@@ -104,7 +104,8 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
                     String taskDate = taskModel.getDate().substring(0,10);
                     currentTime = currentTime.substring(0,10);
                     if (!mSwHomeShowPrevious.isChecked()){
-                        if (LocalDate.parse(taskDate).isAfter(LocalDate.parse(currentTime))){
+                        if (LocalDate.parse(taskDate).isAfter(LocalDate.parse(currentTime)) ||
+                                LocalDate.parse(taskDate).isEqual(LocalDate.parse(currentTime))){
                             taskModelList.add(taskModel);
                             Collections.sort(taskModelList, new Comparator<TaskModel>() {
                                 @Override
