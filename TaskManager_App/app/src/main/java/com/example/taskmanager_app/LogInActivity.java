@@ -13,7 +13,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private EditText mEtLogInEmail;
     private EditText mEtLogInPassword;
     private Button mBtnLogIn;
-    private String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private final String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,8 +2,14 @@ package com.example.taskmanager_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.icu.text.CaseMap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +19,7 @@ import android.app.TimePickerDialog;
 import android.text.InputType;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,11 +35,15 @@ public class CreateTaskActivity extends AppCompatActivity {
     private EditText mEtCreateTaskDate;
     private TaskModel taskModel;
     private FirebaseDatabase firebaseDatabase;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
+
+        createNotificationChanel();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference node = firebaseDatabase.getReference("Users/CurrentUser/Tasks");
@@ -57,8 +68,31 @@ public class CreateTaskActivity extends AppCompatActivity {
                 node.child(Task).setValue(taskModel);
                 Intent setNewTask = new Intent(CreateTaskActivity.this, HomeActivity.class);
                 startActivity(setNewTask);
+                setAlarm();
+            }
+
+            private void setAlarm() {
+                Calendar calendar=Calendar.getInstance();
+                alarmManager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Intent intent=new Intent(CreateTaskActivity.this,AlarmReceiver.class);
+                pendingIntent =PendingIntent.getBroadcast(CreateTaskActivity.this,0,intent,0);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+                Toast.makeText(CreateTaskActivity.this,"Task created successfully",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void createNotificationChanel() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            CharSequence name="foxandroidReminderChannel";
+            String description="Channel For Alarm Manager";
+            int importance= NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel=new NotificationChannel("forandroid",name,importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     private void shoeDateTimeDialog(EditText mEtCreateTaskDate) {

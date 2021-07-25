@@ -15,7 +15,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private EditText mEtSignUpPassword;
     private EditText mEtSignUpRePassword;
     private Button mBtnSignUpCreateAccount;
-    private String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private final String emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

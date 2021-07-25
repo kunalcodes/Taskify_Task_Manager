@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
-    private ArrayList<TaskModel> taskModelList;
+    private final ArrayList<TaskModel> taskModelList;
 
     public TaskAdapter(ArrayList<TaskModel> taskModelArrayList){
         taskModelList = taskModelArrayList;

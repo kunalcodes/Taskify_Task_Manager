@@ -6,9 +6,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -53,5 +57,28 @@ public class ProfileActivity extends AppCompatActivity {
         barChart.setData(barData);
         barChart.getDescription().setText("Bar chart Example");
         barChart.animateY(3000);
+        barChart.getXAxis().setDrawGridLines(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getAxisRight().setDrawGridLines(false);
+
+        PieChart pieChart=findViewById(R.id.doNutChart);
+
+        ArrayList<PieEntry> tasks=new ArrayList<>();
+        tasks.add(new PieEntry(10,"completed"));
+        tasks.add(new PieEntry(7,"Not completed"));
+
+        PieDataSet pieDataSet=new PieDataSet(tasks,"");
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(16f);
+
+        PieData pieData=new PieData(pieDataSet);
+
+        pieChart.setData(pieData);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("Today's Tasks");
+        pieChart.animate();
+        pieChart.setHoleRadius(80);
+
     }
 }

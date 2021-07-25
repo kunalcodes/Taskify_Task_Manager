@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ArrayList<TaskModel> taskModelList = new ArrayList<>();
+    private final ArrayList<TaskModel> taskModelList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TextView mTvHomeExHeyUser;
     private String username;
