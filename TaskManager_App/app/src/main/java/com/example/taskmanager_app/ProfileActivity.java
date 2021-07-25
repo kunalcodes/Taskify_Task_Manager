@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,9 +42,9 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference node;
     private View mViewProfileBack;
     private TextView mTvProfileEmailId;
-    private int totalTaskNumber = 10;
-    private int completedTaskNumber = 7;
-    private int pendingTaskNumber = 3;
+    private int totalTaskNumber = 0;
+    private int completedTaskNumber = 0;
+    private int pendingTaskNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,16 @@ public class ProfileActivity extends AppCompatActivity {
                         pendingTaskNumber += 1;
                     }
                 }
+               runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       mTvProfileTotalTaskData.setText(totalTaskNumber + "");
+                       mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
+                       mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
+                       int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
+                       mTvProfileCompletionRate.setText(percentage + "%");
+                   }
+               });
             }
 
             @Override
@@ -78,12 +89,9 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        mTvProfileTotalTaskData.setText(totalTaskNumber + "");
-        mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
-        mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
 
-        int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
-        mTvProfileCompletionRate.setText(percentage + "%");
+
+
 
         mViewProfileBack.setOnClickListener(new View.OnClickListener() {
             @Override

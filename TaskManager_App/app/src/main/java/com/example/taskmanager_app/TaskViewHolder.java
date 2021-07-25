@@ -62,8 +62,16 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mTvTaskTitle.setText(taskModel.getTitle());
         mTvTaskTime.setText(time + "");
 
+
 //        if (taskModel.getComplete()){
-//            mTvCompleted.setVisibility(View.VISIBLE);
+//            runOnUniThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (taskModel.getComplete()){
+//                        mTvCompleted.setVisibility(View.VISIBLE);
+//                    }
+//                }
+//            });
 //        }
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {

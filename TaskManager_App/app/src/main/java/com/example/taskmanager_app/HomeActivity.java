@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -131,6 +132,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
                     }
 
                 }
+//                Log.d("Kunal",taskModelList.toString());
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
                 taskAdapter.notifyDataSetChanged();
             }
