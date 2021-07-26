@@ -77,8 +77,14 @@ public class ProfileActivity extends AppCompatActivity {
                        mTvProfileTotalTaskData.setText(totalTaskNumber + "");
                        mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
                        mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
-                       int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
-                       mTvProfileCompletionRate.setText(percentage + "%");
+                       if(totalTaskNumber == 0){
+                           mTvProfileCompletionRate.setText("0" + "%");
+                       } else {
+                           int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
+                           mTvProfileCompletionRate.setText(percentage + "%");
+                       }
+//                       int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
+//                       mTvProfileCompletionRate.setText(percentage + "%");
                    }
                });
             }
