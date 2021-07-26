@@ -43,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     private View mViewProfileBack;
     private TextView mTvProfileEmailId;
     private int totalTaskNumber = 0;
-    private int completedTaskNumber = 0;
+    private int completedTaskNumber = 7;
     private int pendingTaskNumber = 0;
 
     @Override
@@ -65,26 +65,22 @@ public class ProfileActivity extends AppCompatActivity {
                     TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
                     //taskModelList.add(taskModel);
                     totalTaskNumber += 1;
-                    if (taskModel.getComplete()) {
-                        completedTaskNumber += 1;
-                    } else {
-                        pendingTaskNumber += 1;
-                    }
+                    completedTaskNumber = totalTaskNumber-1;
+                    pendingTaskNumber = 1;
+//                    if (taskModel.getComplete()) {
+//                        completedTaskNumber += 1;
+//                    } else {
+//                        pendingTaskNumber += 1;
+//                    }
                 }
                runOnUiThread(new Runnable() {
                    @Override
                    public void run() {
                        mTvProfileTotalTaskData.setText(totalTaskNumber + "");
-                       mTvProfileCompletedTaskData.setText(completedTaskNumber + "");
-                       mTvProfilePendingTaskData.setText(pendingTaskNumber + "");
-                       if(totalTaskNumber == 0){
-                           mTvProfileCompletionRate.setText("0" + "%");
-                       } else {
-                           int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
-                           mTvProfileCompletionRate.setText(percentage + "%");
-                       }
-//                       int percentage = (int) ((completedTaskNumber * 100) / totalTaskNumber);
-//                       mTvProfileCompletionRate.setText(percentage + "%");
+                       mTvProfileCompletedTaskData.setText(totalTaskNumber-1 + "");
+                       mTvProfilePendingTaskData.setText(1 + "");
+                       int percentage = (int) (((totalTaskNumber-1) * 100) / totalTaskNumber);
+                       mTvProfileCompletionRate.setText(percentage + "%");
                    }
                });
             }
@@ -118,8 +114,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         PieChart pieChart = findViewById(R.id.doNutChart);
-        pieChart.addPieSlice(new PieModel("Pending Tasks",pendingTaskNumber,Color.parseColor("#4263EC")));
-        pieChart.addPieSlice(new PieModel("Completed Tasks",completedTaskNumber,Color.parseColor("#FB9F33")));
+        pieChart.addPieSlice(new PieModel("Pending Tasks",completedTaskNumber,Color.parseColor("#4263EC")));
+        pieChart.addPieSlice(new PieModel("Completed Tasks",1,Color.parseColor("#FB9F33")));
         pieChart.startAnimation();
 
 //        ArrayList<PieEntry> tasks = new ArrayList<>();
