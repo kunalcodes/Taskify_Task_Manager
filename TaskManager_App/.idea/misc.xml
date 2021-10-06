@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/drawable/btn_login_bg.xml" value="0.1814814814814815" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/drawable/et_white_bg.xml" value="0.1814814814814815" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/drawable/ic_taskify_logo.xml" value="0.17685185185185184" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/drawable/left_arrow.xml" value="0.1814814814814815" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/layout/activity_home.xml" value="0.15" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/layout/activity_log_in.xml" value="0.1388888888888889" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/layout/activity_on_boarding.xml" value="0.13425925925925927" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit2_BuildWeek/TaskManager_App/app/src/main/res/layout/activity_sign_up.xml" value="0.13425925925925927" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

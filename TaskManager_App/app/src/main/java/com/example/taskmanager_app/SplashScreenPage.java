@@ -1,14 +1,12 @@
 package com.example.taskmanager_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreenPage extends AppCompatActivity {
     TextView mtvSplash;
@@ -28,13 +26,19 @@ public class SplashScreenPage extends AppCompatActivity {
         mIvSplash.setAnimation(animation1);
         mIvSplash.startAnimation(animation1);
 
-        Handler handler=new Handler();
-        handler.postDelayed(new Runnable() {
+        Thread thread=new Thread(){
             @Override
             public void run() {
-                Intent intent=new Intent(getApplicationContext(),OnBoardingActivity.class);
-                startActivity(intent);
+                try {
+                    sleep(000);
+                    Intent intent=new Intent(getApplicationContext(),OnBoardingActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        },3000);
+        };
+        thread.start();
     }
 }
