@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1089175133053",
+    "project_id": "taskify-e980f",
+    "storage_bucket": "taskify-e980f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089175133053:android:0460d0e1b35725b6b54a14",
+        "android_client_info": {
+          "package_name": "com.kunal.taskify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089175133053-47rcs47npf9dtldk7skie98iciq9vcjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCUhvWHCCePXyRQWgbnpGa-mBxBzUS5o4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089175133053-47rcs47npf9dtldk7skie98iciq9vcjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089175133053:android:65834c95b70f533fb54a14",
+        "android_client_info": {
+          "package_name": "kunal.project.taskify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089175133053-47rcs47npf9dtldk7skie98iciq9vcjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCUhvWHCCePXyRQWgbnpGa-mBxBzUS5o4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089175133053-47rcs47npf9dtldk7skie98iciq9vcjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
