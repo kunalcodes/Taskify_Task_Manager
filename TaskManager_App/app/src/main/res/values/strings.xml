@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">TaskManager_App</string>
-    <string name="log_in_text"><u>Log in</u></string>
-    <string name="forgot_password_text"><u>Forgot your password?</u></string>
-</resources>
