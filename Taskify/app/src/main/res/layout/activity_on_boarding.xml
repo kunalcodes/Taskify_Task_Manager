@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.OnBoardingActivity">
+
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_taskify_image_tasks"
+        app:layout_constraintEnd_toEndOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintStart_toStartOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintTop_toTopOf="@+id/ivOnBoardingLogoPerson" />
+
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/ic_taskify_image_person"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-80dp"
+        android:background="@drawable/ic_taskify_logo_name"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintEnd_toEndOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintStart_toStartOf="@+id/ivOnBoardingLogoPerson" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOnBoardingCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="@color/taskify_orange"
+        android:elevation="12dp"
+        android:paddingVertical="15dp"
+        android:text="Create an account"
+        android:textAllCaps="false"
+        android:textColor="@color/taskify_white"
+        android:textSize="16sp"
+        app:cornerRadius="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOnBoardingHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Already have an account?"
+        android:textColor="@color/taskify_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvOnBoardingLogin"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/btnOnBoardingCreateAccount"
+        app:layout_constraintTop_toBottomOf="@+id/btnOnBoardingCreateAccount" />
+
+    <TextView
+        android:id="@+id/tvOnBoardingLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:contextClickable="true"
+        android:text="@string/log_in_text"
+        android:textColor="@color/taskify_orange"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOnBoardingHaveAccount"
+        app:layout_constraintEnd_toEndOf="@+id/btnOnBoardingCreateAccount"
+        app:layout_constraintStart_toEndOf="@+id/tvOnBoardingHaveAccount"
+        app:layout_constraintTop_toTopOf="@+id/tvOnBoardingHaveAccount" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

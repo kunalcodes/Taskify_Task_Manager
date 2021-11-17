@@ -4,69 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".views.SplashActivity">
 
-    <View
-        android:id="@+id/viewOnBoardingIcon"
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_taskify_image_tasks"
+        app:layout_constraintEnd_toEndOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintStart_toStartOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintTop_toTopOf="@+id/ivOnBoardingLogoPerson" />
+
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoPerson"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
-        android:background="@drawable/taskify_icon"
-        android:layout_marginTop="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/viewOnBoardingLogo"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/ic_taskify_logo"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/ic_taskify_image_person"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewOnBoardingIcon" />
-
-    <Button
-        android:id="@+id/btnOnBoardingCreateAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:text="Create an account"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:layout_marginHorizontal="40dp"
-        android:textSize="16sp"
-        android:background="@drawable/btn_login_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvOnBoardingHaveAccount"
+    <ImageView
+        android:id="@+id/ivOnBoardingLogoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="60dp"
-        android:text="Already have an account?"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/btnOnBoardingCreateAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btnOnBoardingCreateAccount" />
-
-    <TextView
-        android:id="@+id/tvOnBoardingLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:contextClickable="true"
-        android:text="@string/log_in_text"
-        android:textColor="#FB9F33"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOnBoardingHaveAccount"
-        app:layout_constraintEnd_toEndOf="@+id/btnOnBoardingCreateAccount"
-        app:layout_constraintStart_toEndOf="@+id/tvOnBoardingHaveAccount"
-        app:layout_constraintTop_toTopOf="@+id/tvOnBoardingHaveAccount" />
+        android:layout_marginBottom="-80dp"
+        android:background="@drawable/ic_taskify_logo_name"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintEnd_toEndOf="@+id/ivOnBoardingLogoPerson"
+        app:layout_constraintStart_toStartOf="@+id/ivOnBoardingLogoPerson" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

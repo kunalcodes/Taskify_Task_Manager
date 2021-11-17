@@ -12,6 +12,6 @@
     <color name="taskify_blue">#4263EC</color>
     <color name="taskify_white">#FEFEFE</color>
     <color name="taskify_black">#121212</color>
-    <color name="taskify_light_grey">#121212</color>
+    <color name="taskify_light_grey">#E5E5E5</color>
     <color name="taskify_dark_grey">#9C9C9C</color>
 </resources>
