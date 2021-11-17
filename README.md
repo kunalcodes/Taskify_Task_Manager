@@ -1,1 +1,1 @@
-# Taskify_App
+# Taskify
