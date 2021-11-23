@@ -79,14 +79,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         if (task.isSuccessful()) {
                             mTvLogInLoadingText.setVisibility(View.INVISIBLE);
-                            PreferenceHelper.writeStringToPreference(LoginActivity.this, "Username", mEtLogInEmail.getText().toString());
-//                            node = firebaseDatabase.getReference("Users");
-//                            String Username = mEtLogInEmail.getText().toString().replace(".", "");
-//                            node.child(Username).child("username").setValue(mEtLogInEmail.getText().toString().trim());
-//                            node.child(Username).child("password").setValue(mEtLogInPassword.getText().toString());
-//                            Intent goToHome = new Intent(LoginActivity.this, HomeActivity.class);
-//                            startActivity(goToHome);
-//                            finish();
+                            Intent goToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(goToHome);
+                            finish();
                         } else {
                             mTvLogInLoadingText.setVisibility(View.INVISIBLE);
                             Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();

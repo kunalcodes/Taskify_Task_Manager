@@ -31,15 +31,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private TextView mTvSignUpLoadingText;
     private FirebaseAuth mAuth;
     private ImageButton mViewSignUpBack;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference node;
     private String REGEX = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        firebaseDatabase = FirebaseDatabase.getInstance();
         initViewsAndClickListeners();
     }
 
@@ -82,14 +79,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
                         if (task.isSuccessful()) {
                             mTvSignUpLoadingText.setVisibility(View.INVISIBLE);
-                            PreferenceHelper.writeStringToPreference(SignupActivity.this, "Username", mEtSignUpEmail.getText().toString());
-//                            node = firebaseDatabase.getReference("Users");
-//                            String Username = mEtSignUpEmail.getText().toString().replace(".", "");
-//                            node.child(Username).child("username").setValue(mEtSignUpEmail.getText().toString().trim());
-//                            node.child(Username).child("password").setValue(mEtSignUpPassword.getText().toString());
-//                            Intent goToHome = new Intent(SignupActivity.this, HomeActivity.class);
-//                            startActivity(goToHome);
-//                            finish();
+                            Intent goToHome = new Intent(SignupActivity.this, HomeActivity.class);
+                            startActivity(goToHome);
+                            finish();
                         } else {
                             mTvSignUpLoadingText.setVisibility(View.INVISIBLE);
                             Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
