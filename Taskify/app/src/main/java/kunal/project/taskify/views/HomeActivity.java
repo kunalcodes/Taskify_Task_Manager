@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -56,13 +61,24 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         setContentView(R.layout.activity_home);
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         userName = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        mNode = FirebaseDatabase.getInstance().getReference();
-        mNode.child(mUid).setValue("Hey");
+        mNode = FirebaseDatabase.getInstance().getReference("Users");
         initViewsAndClickListeners();
+        mNode.child(mUid).push().setValue(new TaskModel("Title", "Desc", "14/11/21", false)).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(HomeActivity.this, "Hey added", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(HomeActivity.this, "Hey Error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        setRecyclerViewAdapter();
-        mTvHomeFetchingData.setVisibility(View.VISIBLE);
-        buildRecyclerViewData();
+
+//        setRecyclerViewAdapter();
+//        mTvHomeFetchingData.setVisibility(View.VISIBLE);
+//        buildRecyclerViewData();
     }
 
 
