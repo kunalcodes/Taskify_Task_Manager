@@ -1,6 +1,7 @@
 package kunal.project.taskify.views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,7 +71,6 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         buildRecyclerViewData();
     }
 
-
     private void setRecyclerViewAdapter() {
         taskAdapter = new TaskAdapter(taskList, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -83,9 +84,10 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 taskList.clear();
                 for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
-                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
-                    Log.d("Kunal", "onDataChange: "+taskModel.getComplete());
-                    taskList.add(taskModel);
+                    if (taskDataSnapshot.getValue() != null) {
+                        TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                        taskList.add(taskModel);
+                    }
                 }
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
                 taskAdapter.notifyDataSetChanged();

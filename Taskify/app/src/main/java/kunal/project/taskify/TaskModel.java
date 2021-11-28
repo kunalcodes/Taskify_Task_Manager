@@ -21,6 +21,26 @@ public class TaskModel implements Serializable {
         this.isComplete = isComplete;
     }
 
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setComplete(boolean complete) {
+        isComplete = complete;
+    }
+
     public String getTitle() {
         return title;
     }

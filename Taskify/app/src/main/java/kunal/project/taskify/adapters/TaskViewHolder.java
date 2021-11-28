@@ -68,6 +68,8 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
         if (taskModel.getComplete()) {
             mTvCompleted.setVisibility(View.VISIBLE);
+        } else {
+            mTvCompleted.setVisibility(View.INVISIBLE);
         }
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {
