@@ -5,40 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/taskify_light_grey"
-    tools:context=".views.CreateNewTaskActivity">
+    tools:context=".views.EditTaskActivity">
 
 
     <View
-        android:id="@+id/viewCreateTaskBlueBar"
+        android:id="@+id/viewEditTaskBlueBar"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#4263EC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btnCreateTaskBack"
+        android:id="@+id/btnEditTaskBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="@+id/viewCreateTaskBlueBar"
-        app:layout_constraintTop_toTopOf="@+id/viewCreateTaskBlueBar" />
+        app:layout_constraintStart_toStartOf="@+id/viewEditTaskBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/viewEditTaskBlueBar" />
 
     <TextView
-        android:id="@+id/tvCreateTaskHead"
+        android:id="@+id/tvEditTaskHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
-        android:text="Create New Task"
+        android:text="Edit Task"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewCreateTaskBlueBar"
-        app:layout_constraintStart_toStartOf="@+id/btnCreateTaskBack"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateTaskBack" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewEditTaskBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/btnEditTaskBack"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditTaskBack" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,32 +45,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewCreateTaskBlueBar">
-
+        app:layout_constraintTop_toBottomOf="@+id/viewEditTaskBlueBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvCreateTaskTitle"
+                android:id="@+id/tvEditTaskTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginBottom="8dp"
                 android:text="Task Title"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/etCreateTaskTitle"
-                app:layout_constraintStart_toStartOf="@+id/etCreateTaskTitle" />
+                app:layout_constraintBottom_toTopOf="@+id/etEditTaskTitle"
+                app:layout_constraintStart_toStartOf="@+id/etEditTaskTitle" />
 
             <EditText
-                android:id="@+id/etCreateTaskTitle"
+                android:id="@+id/etEditTaskTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/bg_et_white"
-                android:lines="1"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="12dp"
                 android:textSize="16sp"
@@ -80,45 +77,45 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvCreateTaskDescription"
+                android:id="@+id/tvEditTaskDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginBottom="8dp"
                 android:text="Task Description"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/etCreateTaskDescription"
-                app:layout_constraintStart_toStartOf="@+id/etCreateTaskDescription" />
+                app:layout_constraintBottom_toTopOf="@+id/etEditTaskDescription"
+                app:layout_constraintStart_toStartOf="@+id/etEditTaskDescription" />
 
             <EditText
-                android:id="@+id/etCreateTaskDescription"
+                android:id="@+id/etEditTaskDescription"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="50dp"
+                android:gravity="top"
                 android:textAlignment="gravity"
                 android:background="@drawable/bg_et_white"
-                android:gravity="top"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="10dp"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCreateTaskTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/etEditTaskTitle" />
 
             <TextView
-                android:id="@+id/tvCreateTaskDate"
+                android:id="@+id/tvEditTaskDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginBottom="8dp"
                 android:text="Date"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/etCreateTaskDate"
-                app:layout_constraintStart_toStartOf="@+id/etCreateTaskDate" />
+                app:layout_constraintBottom_toTopOf="@+id/etEditTaskDate"
+                app:layout_constraintStart_toStartOf="@+id/etEditTaskDate" />
 
             <EditText
-                android:id="@+id/etCreateTaskDate"
+                android:id="@+id/etEditTaskDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -129,23 +126,23 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="12dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/etCreateTaskTime"
+                app:layout_constraintEnd_toStartOf="@+id/etEditTaskTime"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/etEditTaskDescription" />
 
             <TextView
-                android:id="@+id/tvCreateTaskTime"
+                android:id="@+id/tvEditTaskTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginBottom="8dp"
                 android:text="Time"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/etCreateTaskTime"
-                app:layout_constraintStart_toStartOf="@+id/etCreateTaskTime" />
+                app:layout_constraintBottom_toTopOf="@+id/etEditTaskTime"
+                app:layout_constraintStart_toStartOf="@+id/etEditTaskTime" />
 
             <EditText
-                android:id="@+id/etCreateTaskTime"
+                android:id="@+id/etEditTaskTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -157,24 +154,23 @@
                 android:paddingVertical="12dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/etCreateTaskDate"
-                app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDescription" />
+                app:layout_constraintStart_toEndOf="@+id/etEditTaskDate"
+                app:layout_constraintTop_toBottomOf="@+id/etEditTaskDescription" />
 
 
             <TextView
-                android:id="@+id/tvCreateTaskStatus"
+                android:id="@+id/tvEditTaskStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginBottom="8dp"
                 android:text="Task Status`"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/btnRadioCreateTaskPending"
-                app:layout_constraintStart_toStartOf="@+id/btnRadioCreateTaskPending" />
-
+                app:layout_constraintBottom_toTopOf="@+id/btnRadioEditTaskPending"
+                app:layout_constraintStart_toStartOf="@+id/btnRadioEditTaskPending" />
 
             <RadioButton
-                android:id="@+id/btnRadioCreateTaskPending"
+                android:id="@+id/btnRadioEditTaskPending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -185,10 +181,10 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDate" />
+                app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
 
             <RadioButton
-                android:id="@+id/btnRadioCreateTaskCompleted"
+                android:id="@+id/btnRadioEditTaskCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
@@ -198,22 +194,46 @@
                 android:text="Completed"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/btnRadioCreateTaskPending"
-                app:layout_constraintTop_toBottomOf="@+id/etCreateTaskDate" />
+                app:layout_constraintStart_toEndOf="@id/btnRadioEditTaskPending"
+                app:layout_constraintTop_toBottomOf="@+id/etEditTaskDate" />
+
+            <View
+                android:id="@+id/viewEditTaskLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRadioEditTaskPending" />
+
+            <TextView
+                android:id="@+id/tvEditTaskDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:drawableStart="@drawable/ic_delete_red"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Delete task"
+                android:textColor="#FF6666"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnEditTaskApply"
+                app:layout_constraintStart_toStartOf="@+id/viewEditTaskLine"
+                app:layout_constraintTop_toBottomOf="@+id/viewEditTaskLine" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCreateTaskAdd"
+                android:id="@+id/btnEditTaskApply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
                 android:backgroundTint="@color/taskify_orange"
-                android:drawableLeft="@drawable/ic_add"
                 android:elevation="12dp"
-                android:paddingHorizontal="92dp"
                 android:paddingVertical="15dp"
-                android:text="Add New Task"
+                android:text="Apply Changes"
                 android:textAllCaps="false"
                 android:textColor="@color/taskify_white"
                 android:textSize="16sp"
@@ -221,7 +241,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnRadioCreateTaskPending" />
+                app:layout_constraintTop_toBottomOf="@id/tvEditTaskDelete" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

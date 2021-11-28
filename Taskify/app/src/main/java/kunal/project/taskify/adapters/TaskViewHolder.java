@@ -112,6 +112,8 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 itemClickListener.onUpdateClicked(getAdapterPosition());
+                mBtnRadioTask.setSelected(false);
+                mBtnRadioTask.setChecked(false);
             }
         });
     }

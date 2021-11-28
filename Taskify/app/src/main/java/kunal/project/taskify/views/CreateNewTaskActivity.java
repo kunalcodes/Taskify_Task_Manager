@@ -87,8 +87,6 @@ public class CreateNewTaskActivity extends AppCompatActivity implements View.OnC
                     mTaskId = mNode.child(mUid).push().getKey();
                     taskModel = new TaskModel(mTaskId, Title, Description, Date, isComplete);
                     mNode.child(mUid).child(mTaskId).setValue(taskModel);
-                    Intent setNewTask = new Intent(CreateNewTaskActivity.this, HomeActivity.class);
-                    startActivity(setNewTask);
                     finish();
                 }
                 break;
@@ -115,11 +113,9 @@ public class CreateNewTaskActivity extends AppCompatActivity implements View.OnC
                 }
                 break;
             case R.id.etCreateTaskDate:
-                Toast.makeText(this, "Date Clicked", Toast.LENGTH_SHORT).show();
                 showDateDialog();
                 break;
             case R.id.etCreateTaskTime:
-                Toast.makeText(this, "Time Clicked", Toast.LENGTH_SHORT).show();
                 showTimeDialog();
                 break;
         }

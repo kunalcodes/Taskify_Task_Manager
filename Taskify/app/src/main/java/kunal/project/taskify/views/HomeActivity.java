@@ -84,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
                 taskList.clear();
                 for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
                     TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    Log.d("Kunal", "onDataChange: "+taskModel.getComplete());
                     taskList.add(taskModel);
                 }
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
@@ -115,18 +116,14 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         mNode.child(mUid).child(mTaskId).removeValue();
     }
 
-    //
-//
-//    @Override
+    @Override
     public void onUpdateClicked(int position) {
-//        String Task = taskModelList.get(position).getTitle().trim();
-//        Intent editTask = new Intent(HomeActivity.this, EditTaskActivity.class);
-//        editTask.putExtra("Task", Task);
-//        editTask.putExtra("Title", taskModelList.get(position).getTitle());
-//        editTask.putExtra("Description", taskModelList.get(position).getDescription());
-//        editTask.putExtra("Date", taskModelList.get(position).getDate());
-//        editTask.putExtra("Status", taskModelList.get(position).getComplete());
-//        startActivity(editTask);
+        TaskModel taskModel = taskList.get(position);
+        Intent editTask = new Intent(HomeActivity.this, EditTaskActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("taskmodel", taskModel);
+        editTask.putExtras(bundle);
+        startActivity(editTask);
     }
 
     @Override

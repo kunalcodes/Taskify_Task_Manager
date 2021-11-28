@@ -1,6 +1,8 @@
 package kunal.project.taskify;
 
-public class TaskModel {
+import java.io.Serializable;
+
+public class TaskModel implements Serializable {
     private String taskId;
     private String title;
     private String description;
