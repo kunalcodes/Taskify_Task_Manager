@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E5E5E5">
     <TextView
         android:id="@+id/tvTaskDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:text="Today"
+        android:layout_marginStart="10dp"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -22,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/bg_et_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,20 @@
         app:layout_constraintEnd_toEndOf="@+id/viewTaskView"
         app:layout_constraintTop_toTopOf="@+id/viewTaskView" />
 
+    <TextView
+        android:id="@+id/tvMissed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_et_task_missed"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:visibility="invisible"
+        android:text="Missed"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/viewTaskView"
+        app:layout_constraintTop_toTopOf="@+id/viewTaskView" />
+
     <RadioButton
         android:id="@+id/btnRadioTask"
         android:layout_width="wrap_content"
@@ -53,9 +69,9 @@
 
     <TextView
         android:id="@+id/tvTaskTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="3dp"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
@@ -71,10 +87,11 @@
 
     <TextView
         android:id="@+id/tvTaskTime"
-        android:layout_width="61dp"
+        android:layout_width="0dp"
         android:layout_height="16dp"
         android:text="08:00 AM"
         app:layout_constraintBottom_toBottomOf="@+id/btnRadioTask"
+        app:layout_constraintEnd_toEndOf="@+id/tvTaskTitle"
         app:layout_constraintStart_toStartOf="@+id/tvTaskTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
 

@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
     private TextView mTvHomeFetchingData;
     private ImageView mIvHomeExUser;
     private DatabaseReference mNode;
+    private String mTaskId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,22 +64,9 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         userName = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         mNode = FirebaseDatabase.getInstance().getReference("Users");
         initViewsAndClickListeners();
-        mNode.child(mUid).push().setValue(new TaskModel("Title", "Desc", "14/11/21", false)).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(HomeActivity.this, "Hey added", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(HomeActivity.this, "Hey Error", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-//        setRecyclerViewAdapter();
-//        mTvHomeFetchingData.setVisibility(View.VISIBLE);
-//        buildRecyclerViewData();
+        setRecyclerViewAdapter();
+        mTvHomeFetchingData.setVisibility(View.VISIBLE);
+        buildRecyclerViewData();
     }
 
 
@@ -95,7 +83,8 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 taskList.clear();
                 for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
-//                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
+                    taskList.add(taskModel);
                 }
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
                 taskAdapter.notifyDataSetChanged();
@@ -120,12 +109,13 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         mIvHomeExUser.setOnClickListener(this);
     }
 
-//    @Override
+    @Override
     public void onDeleteClicked(int position) {
-//        String Task = taskList.get(position).getTitle().trim();
-//        mNode.child(Task).removeValue();
+        mTaskId = taskList.get(position).getTaskId();
+        mNode.child(mUid).child(mTaskId).removeValue();
     }
-//
+
+    //
 //
 //    @Override
     public void onUpdateClicked(int position) {
@@ -144,8 +134,8 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
         int id = view.getId();
         switch (id) {
             case R.id.btnHomeExAdd:
-//                Intent createNewTask = new Intent(HomeActivity.this, CreateTaskActivity.class);
-//                startActivity(createNewTask);
+                Intent createNewTask = new Intent(HomeActivity.this, CreateNewTaskActivity.class);
+                startActivity(createNewTask);
                 break;
             case R.id.ivHomeExUser:
 //                Intent goToProfile = new Intent(getApplicationContext(), ProfileActivity.class);

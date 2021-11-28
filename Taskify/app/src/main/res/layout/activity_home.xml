@@ -54,10 +54,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="611dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -74,15 +75,15 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnHomeExAdd"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:fabCustomSize="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="50dp"
-        app:tint="@color/white"
         android:backgroundTint="@color/taskify_orange"
         android:src="@drawable/ic_add"
+        app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

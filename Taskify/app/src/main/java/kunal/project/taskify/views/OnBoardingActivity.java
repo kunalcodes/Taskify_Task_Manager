@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import kunal.project.taskify.R;
 
 public class OnBoardingActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Button mBtnOnBoardingCreateAccount;
     private TextView mTvOnBoardingLogin;
 
@@ -20,6 +23,18 @@ public class OnBoardingActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
         initViewsAndClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkLoginStatus();
+    }
+
+    private void checkLoginStatus() {
+        if (mAuth.getCurrentUser()!=null){
+            finish();
+        }
     }
 
     private void initViewsAndClickListeners() {

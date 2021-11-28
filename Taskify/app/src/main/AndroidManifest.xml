@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskify">
         <activity
+            android:name=".views.CreateNewTaskActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.HomeActivity"
             android:exported="true" />
         <activity

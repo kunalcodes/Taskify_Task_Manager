@@ -1,12 +1,23 @@
 package kunal.project.taskify.adapters;
 
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Formatter;
 
 import kunal.project.taskify.R;
 import kunal.project.taskify.TaskModel;
@@ -46,17 +57,13 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setData(TaskModel taskModel) {
-        //StringBuilder sb=new StringBuilder(taskModel.getDate().substring(0,10));
-
-        String date = taskModel.getDate().substring(8, 10) + taskModel.getDate().substring(7, 8) +
-                taskModel.getDate().substring(5, 7) + taskModel.getDate().substring(4, 5) +
-                taskModel.getDate().substring(0, 4);
-        String time = taskModel.getDate().substring(14);
-
-        mTvTaskDate.setText(date + "");
+        String[] dateAndTimeArray = taskModel.getDate().split(" @");
+        String time = dateAndTimeArray[1];
+        mTvTaskDate.setText(getDatetext(dateAndTimeArray[0]));
         mTvTaskTitle.setText(taskModel.getTitle());
-        mTvTaskTime.setText(time + "");
+        mTvTaskTime.setText(time);
 
 
         if (taskModel.getComplete()) {
@@ -107,5 +114,70 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 itemClickListener.onUpdateClicked(getAdapterPosition());
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String getDatetext(String taskDate) {
+        Calendar mCalendar = Calendar.getInstance();
+        String localDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        String[] taskDateArray = taskDate.split("/");
+        String[] localDateArray = localDate.split("/");
+        if (Integer.parseInt(taskDateArray[0])==Integer.parseInt(localDateArray[0]) &&
+                Integer.parseInt(taskDateArray[1])==Integer.parseInt(localDateArray[1])) {
+            if (Integer.parseInt(taskDateArray[2])==Integer.parseInt(localDateArray[2])){
+                return "Today";
+            } else if (Integer.parseInt(taskDateArray[2])-Integer.parseInt(localDateArray[2])==1){
+                return "Tomorrow";
+            } else if (Integer.parseInt(taskDateArray[2])-Integer.parseInt(localDateArray[2])==-1){
+                return "Yesterday";
+            } else {
+                return getDateWithMonthName(taskDateArray);
+            }
+        } else {
+            return getDateWithMonthName(taskDateArray);
+        }
+    }
+
+    private String getDateWithMonthName(String[] taskDateArray) {
+        String monthName = "";
+        switch (taskDateArray[1]){
+            case "01":
+                monthName = "Jan";
+                break;
+            case "02":
+                monthName = "Feb";
+                break;
+            case "03":
+                monthName = "Mar";
+                break;
+            case "04":
+                monthName = "Apr";
+                break;
+            case "05":
+                monthName = "May";
+                break;
+            case "06":
+                monthName = "Jun";
+                break;
+            case "07":
+                monthName = "Jul";
+                break;
+            case "08":
+                monthName = "Aug";
+                break;
+            case "09":
+                monthName = "Sep";
+                break;
+            case "10":
+                monthName = "Oct";
+                break;
+            case "11":
+                monthName = "Nov";
+                break;
+            case "12":
+                monthName = "Dec";
+                break;
+        }
+        return taskDateArray[2]+" "+monthName+" "+taskDateArray[0];
     }
 }

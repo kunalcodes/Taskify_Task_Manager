@@ -14,4 +14,6 @@
     <color name="taskify_black">#121212</color>
     <color name="taskify_light_grey">#E5E5E5</color>
     <color name="taskify_dark_grey">#9C9C9C</color>
+    <color name="taskify_green">#20876d</color>
+    <color name="taskify_red">#a81305</color>
 </resources>

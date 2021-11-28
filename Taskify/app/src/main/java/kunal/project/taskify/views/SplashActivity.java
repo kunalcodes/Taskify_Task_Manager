@@ -30,7 +30,6 @@ public class SplashActivity extends AppCompatActivity {
             intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
             goToNextActivity();
         } else {
-            Toast.makeText(SplashActivity.this, "USER LOGGED IN", Toast.LENGTH_SHORT).show();
             intent = new Intent(SplashActivity.this, HomeActivity.class);
             goToNextActivity();
         }
