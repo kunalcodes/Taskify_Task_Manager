@@ -122,7 +122,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getDatetext(String taskDate) {
-        Calendar mCalendar = Calendar.getInstance();
         String localDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
         String[] taskDateArray = taskDate.split("/");
         String[] localDateArray = localDate.split("/");

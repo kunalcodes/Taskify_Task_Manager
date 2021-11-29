@@ -80,13 +80,24 @@ public class HomeActivity extends AppCompatActivity implements TaskItemClickList
 
     private void buildRecyclerViewData() {
         mNode.child(mUid).addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 taskList.clear();
+                String localDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd @hh:mm a"));
+                Log.d("Kunal", "onDataChange: "+localDateTime);
                 for (DataSnapshot taskDataSnapshot : snapshot.getChildren()) {
                     if (taskDataSnapshot.getValue() != null) {
                         TaskModel taskModel = taskDataSnapshot.getValue(TaskModel.class);
-                        taskList.add(taskModel);
+                        if (taskModel.getDate().compareTo(localDateTime)>=0){
+                            taskList.add(taskModel);
+                            Collections.sort(taskList, new Comparator<TaskModel>() {
+                                @Override
+                                public int compare(TaskModel o1, TaskModel o2) {
+                                    return o1.getDate().compareToIgnoreCase(o2.getDate());
+                                }
+                            });
+                        }
                     }
                 }
                 mTvHomeFetchingData.setVisibility(View.INVISIBLE);
