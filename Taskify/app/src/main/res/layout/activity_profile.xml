@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/taskify_light_grey"
+    tools:context=".views.ProfileActivity">
+
+    <View
+        android:id="@+id/viewProfileBlueBar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/taskify_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnProfileBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/viewProfileBlueBar" />
+
+    <TextView
+        android:id="@+id/tvProfileHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginVertical="10dp"
+        android:text="Profile"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnProfileBack"
+        app:layout_constraintEnd_toEndOf="@+id/viewProfileBlueBar"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileBlueBar"
+        app:layout_constraintTop_toTopOf="@+id/btnProfileBack" />
+
+    <TextView
+        android:id="@+id/tvProfileEmailId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="sofiaborg@gmail.com"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileHead"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileHead"
+        app:layout_constraintTop_toBottomOf="@+id/ivHomeExUser" />
+
+    <ImageView
+        android:id="@+id/ivHomeExUser"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewProfileBlueBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewProfileBlueBar"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileHead"
+        app:srcCompat="@drawable/ic_user" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewProfileBlueBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/viewProfileTaskCompleted"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="128dp"
+                android:background="@drawable/bg_et_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvProfileTaskCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Task Completion Rate"
+                android:textColor="#4263EC"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/viewProfileTaskCompleted"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted" />
+
+
+            <TextView
+                android:id="@+id/tvProfileCompletionRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="75%"
+                android:textColor="#4263EC"
+                android:textSize="44dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileTaskCompleted"
+                app:layout_constraintTop_toTopOf="@+id/doNutChart" />
+
+            <View
+                android:id="@+id/viewLegendCompleted"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:background="#4263EC"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileCompletionRate"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileCompletionRate" />
+
+            <TextView
+                android:id="@+id/tvLegendCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Completed"
+                android:textColor="#4263EC"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewLegendCompleted"
+                app:layout_constraintStart_toEndOf="@+id/viewLegendCompleted"
+                app:layout_constraintTop_toTopOf="@+id/viewLegendCompleted" />
+
+            <View
+                android:id="@+id/viewLegendPending"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:background="#FB9F33"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileCompletionRate"
+                app:layout_constraintTop_toBottomOf="@+id/tvLegendCompleted" />
+
+            <TextView
+                android:id="@+id/tvLegendPending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Pending"
+                android:textColor="#FB9F33"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewLegendPending"
+                app:layout_constraintStart_toEndOf="@+id/viewLegendCompleted"
+                app:layout_constraintTop_toTopOf="@+id/viewLegendPending" />
+
+            <View
+                android:id="@+id/viewLegendMissed"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/taskify_dark_grey"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileCompletionRate"
+                app:layout_constraintTop_toBottomOf="@+id/tvLegendPending" />
+
+            <TextView
+                android:id="@+id/tvLegendMissed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Missed"
+                android:textColor="@color/taskify_dark_grey"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewLegendMissed"
+                app:layout_constraintStart_toEndOf="@+id/viewLegendCompleted"
+                app:layout_constraintTop_toTopOf="@+id/viewLegendMissed" />
+
+
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/doNutChart"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginRight="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewProfileTaskCompleted"
+                app:layout_constraintEnd_toEndOf="@+id/viewProfileTaskCompleted"
+                app:layout_constraintTop_toTopOf="@+id/viewProfileTaskCompleted" />
+
+            <View
+                android:id="@+id/viewProfileAchievements"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_et_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewProfileTaskCompleted" />
+
+            <TextView
+                android:id="@+id/tvProfileDashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Dashboard"
+                android:textColor="#FB9F33"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements"
+                app:layout_constraintTop_toTopOf="@+id/viewProfileAchievements" />
+
+            <TextView
+                android:id="@+id/tvProfileTotalTaskData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4000"
+                android:textColor="#4263EC"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine1"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfileTotalTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine1"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements" />
+
+            <View
+                android:id="@+id/viewDashBoardLine1"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#E5E5E5"
+                app:layout_constraintBottom_toBottomOf="@+id/viewProfileAchievements"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine2"
+                app:layout_constraintStart_toStartOf="@+id/viewProfileAchievements"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfileCompletedTaskData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2000"
+                android:textColor="#4263EC"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine2"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine1"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfileCompletedTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine1"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine2"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine1" />
+
+            <View
+                android:id="@+id/viewDashBoardLine2"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#E5E5E5"
+                app:layout_constraintBottom_toBottomOf="@+id/viewProfileAchievements"
+                app:layout_constraintEnd_toEndOf="@+id/tvProfileDashboard"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileDashboard"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfilePendingTaskData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:textColor="#4263EC"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine2"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine3"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine2"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfilePendingTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pending"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine2"
+                app:layout_constraintEnd_toStartOf="@+id/viewDashBoardLine3"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine2" />
+
+            <View
+                android:id="@+id/viewDashBoardLine3"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#E5E5E5"
+                app:layout_constraintBottom_toBottomOf="@+id/viewProfileAchievements"
+                app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine2"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfileMissedTaskData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:textColor="#4263EC"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine2"
+                app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine3"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileDashboard" />
+
+            <TextView
+                android:id="@+id/tvProfileMissedTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Missed"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewDashBoardLine2"
+                app:layout_constraintEnd_toEndOf="@+id/viewProfileAchievements"
+                app:layout_constraintStart_toEndOf="@+id/viewDashBoardLine3" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnProfileSignOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/taskify_orange"
+                android:elevation="12dp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="15dp"
+                android:text="Sign Out"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/taskify_white"
+                android:textSize="16sp"
+                app:cornerRadius="12sp"
+                app:icon="@drawable/ic_sign_out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewProfileAchievements" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

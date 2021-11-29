@@ -36,6 +36,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setFragmentPagerAdapter();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkLoginStatus();
+    }
+
+    private void checkLoginStatus() {
+        if (FirebaseAuth.getInstance().getCurrentUser()!=null){
+            finish();
+        }
+    }
+
     private void setFragmentPagerAdapter() {
         TasksFragmentPagerAdapter pagerAdapter = new TasksFragmentPagerAdapter(getSupportFragmentManager(), getLifecycle());
         mViewPagerTaskList.setAdapter(pagerAdapter);
@@ -75,8 +87,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(createNewTask);
                 break;
             case R.id.ivHomeExUser:
-//                Intent goToProfile = new Intent(getApplicationContext(), ProfileActivity.class);
-//                startActivity(goToProfile);
+                Intent goToProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(goToProfile);
                 break;
         }
     }

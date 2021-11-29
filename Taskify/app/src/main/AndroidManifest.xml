@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskify">
         <activity
+            android:name=".views.ProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.EditTaskActivity"
             android:exported="true" />
         <activity
