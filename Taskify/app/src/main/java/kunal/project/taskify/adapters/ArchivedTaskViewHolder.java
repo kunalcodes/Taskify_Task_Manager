@@ -1,7 +1,6 @@
 package kunal.project.taskify.adapters;
 
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -11,20 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Formatter;
 
 import kunal.project.taskify.R;
 import kunal.project.taskify.TaskModel;
 import kunal.project.taskify.utils.TaskItemClickListener;
 
 
-public class TaskViewHolder extends RecyclerView.ViewHolder {
+public class ArchivedTaskViewHolder extends RecyclerView.ViewHolder {
 
     private TextView mTvTaskDate;
     private TextView mTvTaskTitle;
@@ -32,13 +26,13 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     private RadioButton mBtnRadioTask;
     private View mViewTaskExpandedView;
     private View mViewTaskView;
-    private TextView mTvTaskUpdate;
     private TextView mTvTaskDelete;
     private TextView mTvCompleted;
+    private TextView mTvMissed;
     private TaskItemClickListener itemClickListener;
 
 
-    public TaskViewHolder(@NonNull View itemView, TaskItemClickListener itemClickListener) {
+    public ArchivedTaskViewHolder(@NonNull View itemView, TaskItemClickListener itemClickListener) {
         super(itemView);
         this.itemClickListener = itemClickListener;
         initViews(itemView);
@@ -51,9 +45,9 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         mBtnRadioTask = itemView.findViewById(R.id.btnRadioTask);
         mViewTaskExpandedView = itemView.findViewById(R.id.viewTaskExpandedView);
         mViewTaskView = itemView.findViewById(R.id.viewTaskView);
-        mTvTaskUpdate = itemView.findViewById(R.id.tvTaskUpdate);
         mTvTaskDelete = itemView.findViewById(R.id.tvTaskDelete);
         mTvCompleted = itemView.findViewById(R.id.tvCompleted);
+        mTvMissed = itemView.findViewById(R.id.tvMissed);
     }
 
 
@@ -68,8 +62,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
         if (taskModel.getComplete()) {
             mTvCompleted.setVisibility(View.VISIBLE);
+            mTvMissed.setVisibility(View.INVISIBLE);
         } else {
             mTvCompleted.setVisibility(View.INVISIBLE);
+            mTvMissed.setVisibility(View.VISIBLE);
         }
 
         mBtnRadioTask.setOnClickListener(new View.OnClickListener() {
@@ -91,12 +87,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 if (isChecked) {
                     mViewTaskView.setBackgroundResource(R.drawable.bg_et_white_half_round);
                     mViewTaskExpandedView.setVisibility(View.VISIBLE);
-                    mTvTaskUpdate.setVisibility(View.VISIBLE);
                     mTvTaskDelete.setVisibility(View.VISIBLE);
                 } else {
                     mViewTaskView.setBackgroundResource(R.drawable.bg_et_white);
                     mViewTaskExpandedView.setVisibility(View.GONE);
-                    mTvTaskUpdate.setVisibility(View.GONE);
                     mTvTaskDelete.setVisibility(View.GONE);
                 }
             }
@@ -107,15 +101,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 mBtnRadioTask.setChecked(false);
                 itemClickListener.onDeleteClicked(getAdapterPosition());
-            }
-        });
-
-        mTvTaskUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemClickListener.onUpdateClicked(getAdapterPosition());
-                mBtnRadioTask.setSelected(false);
-                mBtnRadioTask.setChecked(false);
             }
         });
     }

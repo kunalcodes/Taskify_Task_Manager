@@ -51,27 +51,32 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivHomeExUser"
         app:layout_constraintStart_toEndOf="@+id/ivHomeExUser" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabsTaskList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:background="@color/taskify_blue"
+            app:tabTextColor="@color/taskify_light_grey"
+            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorGravity="stretch"
+            app:tabBackground="@color/taskify_blue"
+            app:tabIndicatorColor="#50000000"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerTaskList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tvHomeFetchingData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FetchingData..."
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHomeExBlueBar" />
+        app:layout_constraintTop_toBottomOf="@+id/tabsTaskList" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnHomeExAdd"
