@@ -5,6 +5,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mTvHomeExHeyUser;
     private String userName;
+    private FirebaseAuth mAuth;
     private FloatingActionButton mBtnHomeExAdd;
     private ImageView mIvHomeExUser;
     private ViewPager2 mViewPagerTaskList;
@@ -31,7 +33,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        userName = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        mAuth = FirebaseAuth.getInstance();
+        userName = mAuth.getCurrentUser().getEmail();
         initViewsAndClickListeners();
         setFragmentPagerAdapter();
     }
@@ -43,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void checkLoginStatus() {
-        if (FirebaseAuth.getInstance().getCurrentUser()!=null){
+        if (mAuth.getCurrentUser()==null){
             finish();
         }
     }
