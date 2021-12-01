@@ -70,9 +70,9 @@ Taskify is an android mobile application for everyday task management.
 
 * Click on “Clone or download” and copy the URL.
 
-* Use the git clone command along with the copied URL from earlier. $ git clone https://github.com/kunalcodes/Unit2_BuildWeek.git
+* Use the git clone command along with the copied URL from earlier. $ git clone https://github.com/kunalcodes/Taskify_Task_Manager.git
 
-* Press Enter. $ git clone https://github.com/kunalcodes/Unit2_BuildWeek.git Cloning into Git … remote: Counting objects: 13, done. remote: Compressing objects: 100% (13/13), done. remove: Total 13 (delta 1), reused 0 (delta 1) Unpacking objects: 100% (13/13), done.
+* Press Enter. $ git clone https://github.com/kunalcodes/Taskify_Task_Manager.git Cloning into Git … remote: Counting objects: 13, done. remote: Compressing objects: 100% (13/13), done. remove: Total 13 (delta 1), reused 0 (delta 1) Unpacking objects: 100% (13/13), done.
 
 Congratulations, you have created your first local clone from your remote Github repository.
 
