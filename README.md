@@ -16,9 +16,7 @@ Taskify is an android mobile application for everyday task management.
 
 
 
-<!-- 
-# Links 
-* Blog-Post :-  -->
+
 
 # Tech Stack ✨
 
