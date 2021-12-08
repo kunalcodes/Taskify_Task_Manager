@@ -14,6 +14,13 @@ Taskify is an android mobile application for everyday task management.
 * Archiving of expired tasks
 * Productivity stats
 
+<br/>
+
+
+# Get it on playstore:
+
+
+<a href="https://play.google.com/store/apps/details?id=kunal.project.taskify" title="Playstore" target="_blank"><img height="120" width="240" src="https://data.ibtimes.sg/en/full/12247/google-play-store-8-1-73-apk.png"></a>
 
 
 <!-- 
