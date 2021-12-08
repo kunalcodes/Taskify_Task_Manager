@@ -4,7 +4,7 @@ Taskify is an android mobile application for everyday task management.
 
 
 
- ![GitHub Cards Preview](https://github.com/kunalcodes/Unit2_BuildWeek/blob/main/Taskify/app/src/main/res/drawable/taskify_project_image.jpg)
+ ![GitHub Cards Preview](https://github.com/kunalcodes/Taskify_Task_Manager/blob/main/Taskify/app/src/main/res/drawable/github_project_image_taskify.jpg)
 
 
 
