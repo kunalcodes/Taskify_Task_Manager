@@ -118,4 +118,4 @@ Open Android Studio. Go to File > New > Project From Version Control. Copy the l
 * [Firebase](https://firebase.google.com/docs/auth)
 * [Graphs and Charts](https://github.com/blackfizz/EazeGraph)
 * [Java](https://www.oracle.com/java/technologies/downloads/)
-* [UI Design](https://www.figma.com/file/u1s7eOznRSbGTGY5kEs2tz/Task-Management-App)
+* [UI Design Reference](https://www.figma.com/file/u1s7eOznRSbGTGY5kEs2tz/Task-Management-App)
